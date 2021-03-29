@@ -2,7 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ *//*
+
 package com.stir.cscu9t4assignment2021;
 
 import org.junit.jupiter.api.AfterEach;
@@ -12,10 +13,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+*/
 /**
  *
  * @author saemundur
- */
+ *//*
+
 public class RefCollectionTest {
     
     public RefCollectionTest() {
@@ -37,9 +40,11 @@ public class RefCollectionTest {
     public void tearDown() {
     }
 
-    /**
+    */
+/**
      * Test of addCite method, of class RefCollection.
-     */
+     *//*
+
     @Test
     public void testAddCite() {
         System.out.println("addCite");
@@ -50,9 +55,11 @@ public class RefCollectionTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    */
+/**
      * Test of lookUpByJournal method, of class RefCollection.
-     */
+     *//*
+
     @Test
     public void testLookUpByJournal() {
         System.out.println("lookUpByJournal");
@@ -65,9 +72,11 @@ public class RefCollectionTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    */
+/**
      * Test of loopUpByVenue method, of class RefCollection.
-     */
+     *//*
+
     @Test
     public void testLoopUpByVenue() {
         System.out.println("loopUpByVenue");
@@ -80,9 +89,11 @@ public class RefCollectionTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    */
+/**
      * Test of lookUpByPublisher method, of class RefCollection.
-     */
+     *//*
+
     @Test
     public void testLookUpByPublisher() {
         System.out.println("lookUpByPublisher");
@@ -95,9 +106,11 @@ public class RefCollectionTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    */
+/**
      * Test of getNumberOfRefs method, of class RefCollection.
-     */
+     *//*
+
     @Test
     public void testGetNumberOfRefs() {
         System.out.println("getNumberOfRefs");
@@ -110,9 +123,11 @@ public class RefCollectionTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    */
+/**
      * Test of exportAll method, of class RefCollection.
-     */
+     *//*
+
     @Test
     public void testExportAll() {
         System.out.println("exportAll");
@@ -124,9 +139,11 @@ public class RefCollectionTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    */
+/**
      * Test of importMany method, of class RefCollection.
-     */
+     *//*
+
     @Test
     public void testImportMany() {
         System.out.println("importMany");
@@ -140,3 +157,4 @@ public class RefCollectionTest {
     }
     
 }
+*/

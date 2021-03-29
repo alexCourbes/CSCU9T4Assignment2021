@@ -2,7 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ *//*
+
 package com.stir.cscu9t4assignment2021;
 
 import java.awt.event.ActionEvent;
@@ -13,10 +14,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+*/
 /**
  *
  * @author saemundur
- */
+ *//*
+
 public class RefSystemGUITest {
     
     public RefSystemGUITest() {
@@ -38,10 +41,12 @@ public class RefSystemGUITest {
     public void tearDown() {
     }
 
-    /**
+    */
+/**
      * Test of main method, of class RefSystemGUI.
      * Just tests if the GUI initiates without explicit fail
-     */
+     *//*
+
     @Test
     public void testMain() {
         System.out.println("main");
@@ -49,11 +54,13 @@ public class RefSystemGUITest {
         RefSystemGUI.main(args);
     }
 
-    /**
+    */
+/**
      * Test of actionPerformed method, of class RefSystemGUI.
      * You might want to add an action and a few more test cases with 
      * different actions
-     */
+     *//*
+
     @Test
     public void testActionPerformed() {
         System.out.println("actionPerformed");
@@ -63,3 +70,4 @@ public class RefSystemGUITest {
     }
     
 }
+*/

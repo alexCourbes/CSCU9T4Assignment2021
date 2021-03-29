@@ -2,7 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ *//*
+
 package com.stir.cscu9t4assignment2021;
 
 import org.junit.jupiter.api.AfterEach;
@@ -12,10 +13,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+*/
 /**
  *
  * @author saemundur
- */
+ *//*
+
 public class RefJournalTest {
     
     public RefJournalTest() {
@@ -37,9 +40,11 @@ public class RefJournalTest {
     public void tearDown() {
     }
 
-    /**
+    */
+/**
      * Test of getJournal method, of class RefJournal.
-     */
+     *//*
+
     @Test
     public void testGetJournal() {
         System.out.println("getJournal");
@@ -51,9 +56,11 @@ public class RefJournalTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    */
+/**
      * Test of getCitation method, of class RefJournal.
-     */
+     *//*
+
     @Test
     public void testGetCitation() {
         System.out.println("getCitation");
@@ -66,3 +73,4 @@ public class RefJournalTest {
     }
     
 }
+*/

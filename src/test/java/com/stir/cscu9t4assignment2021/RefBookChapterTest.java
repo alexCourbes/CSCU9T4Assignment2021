@@ -2,7 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ *//*
+
 package com.stir.cscu9t4assignment2021;
 
 import org.junit.jupiter.api.AfterEach;
@@ -12,10 +13,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+*/
 /**
  *
  * @author saemundur
- */
+ *//*
+
 public class RefBookChapterTest {
     
     public RefBookChapterTest() {
@@ -37,14 +40,18 @@ public class RefBookChapterTest {
     public void tearDown() {
     }
 
-    /**
+    */
+/**
      * Test of 
-     */
+     *//*
+
     
-    /**
+    */
+/**
      * Test of getBook method, of class RefBookChapter.
      * Also tests the constructor without date added
-     */
+     *//*
+
     @Test
     public void testGetBook() {
         System.out.println("getBook");
@@ -62,10 +69,12 @@ public class RefBookChapterTest {
         assertEquals(expResult, result);
     }
 
-    /**
+    */
+/**
      * Test of getCitation method, of class RefBookChapter.
      * Also tests the constructor without date added
-     */
+     *//*
+
     @Test
     public void testGetCitation() {
         System.out.println("getCitation");
@@ -91,3 +100,4 @@ public class RefBookChapterTest {
     }
     
 }
+*/

@@ -2,7 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ *//*
+
 package com.stir.cscu9t4assignment2021;
 
 import org.junit.jupiter.api.AfterEach;
@@ -12,37 +13,42 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+*/
 /**
  *
  * @author saemundur
- */
+ *//*
+
 public class RefTest {
-    
+
     public RefTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
-    
 
-    /**
+
+    */
+/**
      * Test of getTitle method, of class Ref.
-     */
-    @Test
-    public void testGetTitle() {
+     *//*
+
+    //@Test
+    */
+/*public void testGetTitle() {
         System.out.println("getTitle");
         Ref instance = null;
         String expResult = "";
@@ -52,9 +58,13 @@ public class RefTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    *//*
+*/
+/**
      * Test of getAuthors method, of class Ref.
-     */
+     *//*
+*/
+/*
     @Test
     public void testGetAuthors() {
         System.out.println("getAuthors");
@@ -66,9 +76,13 @@ public class RefTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    *//*
+*/
+/**
      * Test of getPubYear method, of class Ref.
-     */
+     *//*
+*/
+/*
     @Test
     public void testGetPubYear() {
         System.out.println("getPubYear");
@@ -80,9 +94,13 @@ public class RefTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    *//*
+*/
+/**
      * Test of getPublisher method, of class Ref.
-     */
+     *//*
+*/
+/*
     @Test
     public void testGetPublisher() {
         System.out.println("getPublisher");
@@ -94,9 +112,13 @@ public class RefTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    *//*
+*/
+/**
      * Test of getDoi method, of class Ref.
-     */
+     *//*
+*/
+/*
     @Test
     public void testGetDoi() {
         System.out.println("getDoi");
@@ -108,9 +130,13 @@ public class RefTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    *//*
+*/
+/**
      * Test of getDateAdded method, of class Ref.
-     */
+     *//*
+*/
+/*
     @Test
     public void testGetDateAdded() {
         System.out.println("getDateAdded");
@@ -122,9 +148,13 @@ public class RefTest {
         fail("The test case is a prototype.");
     }
 
-    /**
+    *//*
+*/
+/**
      * Test of getCitation method, of class Ref.
-     */
+     *//*
+*/
+/*
     @Test
     public void testGetCitation() {
         System.out.println("getCitation");
@@ -135,5 +165,7 @@ public class RefTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+    *//*
+
 }
+*/
