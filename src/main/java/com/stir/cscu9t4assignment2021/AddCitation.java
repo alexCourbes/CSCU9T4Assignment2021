@@ -35,8 +35,8 @@ public class AddCitation extends JPanel{
 
 
 
-    public  AddCitation(JPanel panel){
-        initialAddApp = panel;
+    public  AddCitation(int Height, int Width){
+        initialAddApp = new JPanel();
 
         //Element declaration
         titleLable = new JLabel ("Title:");
@@ -47,33 +47,39 @@ public class AddCitation extends JPanel{
         digitalObjectIdentifierLabel = new JLabel("DOI:");
         dateAddedLabel = new JLabel("Date Added:");
 
-        titleTextField = new JTextField();
-        typeOfPublicationTextField = new JTextField();
+        titleTextField = new JTextField(15);
+        typeOfPublicationTextField = new JTextField(15);
         authorsTextField = new JTextField();
         yearsOfPublicationTextField = new JTextField();
         nameOfPublicationTextField = new JTextField();
         digitalObjectIdentifierTextField = new JTextField();
         dateAddedTextField= new JTextField();
 
-        Box Vboxlayout = Box.createVerticalBox();
-        //Adding element to the panel
-        Vboxlayout.add(titleLable);
-        Vboxlayout.add(titleTextField);
-        Vboxlayout.add(typeOfPublicationLabel);
-        Vboxlayout.add(typeOfPublicationTextField);
-        Vboxlayout.add(authorsLabel);
-        Vboxlayout.add(authorsTextField);
-        Vboxlayout.add(yearOfPublicationLabel);
-        Vboxlayout.add(yearsOfPublicationTextField);
-        Vboxlayout.add(nameOfPublicationLabel);
-        Vboxlayout.add(nameOfPublicationTextField);
-        Vboxlayout.add(digitalObjectIdentifierLabel);
-        Vboxlayout.add(digitalObjectIdentifierTextField);
-        Vboxlayout.add(dateAddedLabel);
-        Vboxlayout.add(dateAddedTextField);
-         //vertical box layout for element veritaclly assigned
 
-        initialAddApp.add(Vboxlayout);
+        //Adding element to the panel
+
+        Box box = Box.createVerticalBox();
+
+        box.add(titleLable);
+        box.add(titleTextField);
+
+        box.add(typeOfPublicationLabel);
+        box.add(typeOfPublicationTextField);
+        box.add(authorsLabel);
+        box.add(authorsTextField);
+        box.add(yearOfPublicationLabel);
+        box.add(yearsOfPublicationTextField);
+        box.add(nameOfPublicationLabel);
+        box.add(nameOfPublicationTextField);
+        box.add(digitalObjectIdentifierLabel);
+        box.add(digitalObjectIdentifierTextField);
+        box.add(dateAddedLabel);
+        box.add(dateAddedTextField);
+
+         //vertical box layout for element veritaclly assigned
+        add(box);
+        setLayout(new FlowLayout(FlowLayout.LEFT));
+
 
     }
 

@@ -1,9 +1,12 @@
 package com.stir.cscu9t4assignment2021;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class RefSystemGUI {
@@ -34,7 +37,7 @@ public class RefSystemGUI {
     private final JButton menuButton2 = new JButton("wawa");
     private final JButton menuButton3 = new JButton("I am billof");
     private final JButton menuButton4 = new JButton("Hello");
-    private final JButton menuButton5 = new JButton("Borat");
+
 
     
     
@@ -50,7 +53,10 @@ public class RefSystemGUI {
         topMenu.add(addCitationMenu);
         addCitationMenu.addActionListener( e->{
             initialMainApp.removeAll();
-            addPanel = new AddCitation(initialMainApp);
+            int Height = initialMainApp.getHeight();
+            int Width = initialMainApp.getWidth();
+            addPanel = new AddCitation(Height,Width);
+
             initialMainApp.add(addPanel);
             initialMainApp.revalidate();
 
@@ -97,7 +103,16 @@ public class RefSystemGUI {
         Vboxlayout.add(menuButton2);
         Vboxlayout.add(menuButton3);
         Vboxlayout.add(menuButton4);
-        Vboxlayout.add(menuButton5);
+
+      //Setting Button
+
+        JButton settingButton = new JButton(new ImageIcon("src/main/java/com/stir/cscu9t4assignment2021/static/gearPic.png"));
+        settingButton.setPreferredSize(new Dimension(10,45));
+        Vboxlayout.add(settingButton);
+        JPopupMenu settingPopPup = new JPopupMenu("Settings");
+
+
+
         sideBarMenu.add(Vboxlayout);
         sideBarMenu.setBorder(BorderFactory.createTitledBorder("sidebar"));
 
