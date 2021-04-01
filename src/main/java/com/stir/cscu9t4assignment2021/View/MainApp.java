@@ -1,27 +1,20 @@
-package com.stir.cscu9t4assignment2021;
+package com.stir.cscu9t4assignment2021.View;
 
-import javax.imageio.ImageIO;
+import com.stir.cscu9t4assignment2021.Controller.mainController;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
-public class RefSystemGUI {
+public class MainApp {
 
 
     private JPanel topMenu;
     private JPanel sideBarMenu;
 
     private JPanel initialMainApp,addPanel,searchPanel,importPanel,exportPanel;
-
-
-
-
-
-
 
 
 
@@ -42,15 +35,17 @@ public class RefSystemGUI {
     
     
     //GUI  
-    public RefSystemGUI() {
+    public MainApp() {
 
 
         //Holder (panel) for the Buttons: ADD,SEARCH,IMPORT,EXPORT
-        topMenu = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        topMenu = new JPanel(new FlowLayout(FlowLayout.CENTER,40,0));
 
         //we add the 4 buttons:
 
         topMenu.add(addCitationMenu);
+        addCitationMenu.setBorder(null);
+        addCitationMenu.setContentAreaFilled(false);
         addCitationMenu.addActionListener( e->{
             initialMainApp.removeAll();
             int Height = initialMainApp.getHeight();
@@ -64,6 +59,20 @@ public class RefSystemGUI {
 
 
         topMenu.add(searchCitationMenu);
+        searchCitationMenu.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                searchCitationMenu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                searchCitationMenu.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        });
+
+        searchCitationMenu.setBorder(null);
+        searchCitationMenu.setContentAreaFilled(false);
         searchCitationMenu.addActionListener( e->{
             initialMainApp.removeAll();
             searchPanel = new SearchCitation(initialMainApp);
@@ -72,14 +81,32 @@ public class RefSystemGUI {
         });
 
         topMenu.add(importMenuButton);
+        importMenuButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                importMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                importMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        });
+        importMenuButton.setBorder(null);
+        importMenuButton.setContentAreaFilled(false);
+
         importMenuButton.addActionListener( e->{
+
             initialMainApp.removeAll();
             importPanel = new ImportCitation(initialMainApp);
             initialMainApp.add(importPanel);
             initialMainApp.revalidate();
+
         });
 
         topMenu.add(exportMenuButton);
+        exportMenuButton.setBorder(null);
+        exportMenuButton.setContentAreaFilled(false);
         exportMenuButton.addActionListener( e->{
             initialMainApp.removeAll();
             exportPanel = new ExportCitation(initialMainApp);
@@ -104,14 +131,34 @@ public class RefSystemGUI {
         Vboxlayout.add(menuButton3);
         Vboxlayout.add(menuButton4);
 
+       //SideBar
+
       //Setting Button
+        JButton settingButton = new JButton("Settings",new ImageIcon("src/main/java/com/stir/cscu9t4assignment2021/static/settingIcon.png"));
+        settingButton.setBorder(null);
+        settingButton.setContentAreaFilled(false);
 
-        JButton settingButton = new JButton(new ImageIcon("src/main/java/com/stir/cscu9t4assignment2021/static/gearPic.png"));
-        settingButton.setPreferredSize(new Dimension(10,45));
         Vboxlayout.add(settingButton);
-        JPopupMenu settingPopPup = new JPopupMenu("Settings");
 
+        //event for hand cursor when hovering over the setting button
+        settingButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                settingButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
 
+            @Override
+            public void mouseExited(MouseEvent e) {
+                settingButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        });
+
+        settingButton.addActionListener(e-> {
+
+        mainController settingController = new mainController();
+        settingController.settingTab();
+
+        });
 
         sideBarMenu.add(Vboxlayout);
         sideBarMenu.setBorder(BorderFactory.createTitledBorder("sidebar"));
@@ -121,18 +168,18 @@ public class RefSystemGUI {
         JFrame frame = new JFrame("Citation App");
         frame.setLayout(new BorderLayout());      // This is the Parent layout
 
-        //add the three sections(panels) to the frame
+        //Add the three sections(panels) to the frame
         frame.add(topMenu, BorderLayout.PAGE_START);
         frame.add(initialMainApp, BorderLayout.CENTER);
         frame.add(sideBarMenu, BorderLayout.LINE_START);
 
 
-
+        //default
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);//animation when opening app
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); //animation when opening app
 
 
 

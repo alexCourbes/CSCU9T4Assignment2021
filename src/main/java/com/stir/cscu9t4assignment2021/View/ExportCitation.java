@@ -1,4 +1,4 @@
-package com.stir.cscu9t4assignment2021;
+package com.stir.cscu9t4assignment2021.View;
 
 import javax.swing.*;
 import java.awt.*;

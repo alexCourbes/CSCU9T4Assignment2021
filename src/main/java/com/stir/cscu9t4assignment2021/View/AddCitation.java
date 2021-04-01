@@ -1,4 +1,4 @@
-package com.stir.cscu9t4assignment2021;
+package com.stir.cscu9t4assignment2021.View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,6 +30,10 @@ public class AddCitation extends JPanel{
     private JTextField digitalObjectIdentifierTextField;
     private JTextField dateAddedTextField;
 
+
+    private JButton submitCitation;
+    private JComboBox publicationType;
+    String [] publicationChoice  ={"Journal Paper","Conference Paper","Book Chapter"};
     private JPanel initialAddApp;
 
 
@@ -38,7 +42,14 @@ public class AddCitation extends JPanel{
     public  AddCitation(int Height, int Width){
         initialAddApp = new JPanel();
 
+
+
         //Element declaration
+
+        //Type of Publication
+        publicationType = new JComboBox(publicationChoice);
+
+
         titleLable = new JLabel ("Title:");
         typeOfPublicationLabel = new JLabel("Type of publication:");
         authorsLabel = new JLabel("Authors:");
@@ -56,10 +67,15 @@ public class AddCitation extends JPanel{
         dateAddedTextField= new JTextField();
 
 
+        submitCitation = new JButton("Add Citation");
+
         //Adding element to the panel
 
         Box box = Box.createVerticalBox();
 
+        box.add(publicationType);
+        publicationType.setAlignmentX(LEFT_ALIGNMENT);
+        box.add(Box.createVerticalStrut(50));
         box.add(titleLable);
         box.add(titleTextField);
 
@@ -75,9 +91,11 @@ public class AddCitation extends JPanel{
         box.add(digitalObjectIdentifierTextField);
         box.add(dateAddedLabel);
         box.add(dateAddedTextField);
-
+        box.add(Box.createVerticalStrut(50));
+        box.add(submitCitation);
          //vertical box layout for element veritaclly assigned
         add(box);
+
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
 
