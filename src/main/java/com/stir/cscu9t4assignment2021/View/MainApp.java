@@ -1,11 +1,14 @@
 package com.stir.cscu9t4assignment2021.View;
 
 import com.stir.cscu9t4assignment2021.Controller.mainController;
+import com.stir.cscu9t4assignment2021.Model.Citation;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainApp {
@@ -14,73 +17,98 @@ public class MainApp {
     private JPanel topMenu;
     private JPanel sideBarMenu;
 
-    private JPanel initialMainApp,addPanel,searchPanel,importPanel,exportPanel;
-
+    private JPanel initialMainApp, addPanel, searchPanel, importPanel, exportPanel;
 
 
     //declaration of buttons for the menu at the top: topMenu
-    private final JButton addCitationMenu = new JButton("ADD");
-    private final JButton searchCitationMenu = new JButton("SEARCH");
+    private final JButton addCitationButton = new JButton("ADD");
+    private final JButton searchCitationButton = new JButton("SEARCH");
     private final JButton importMenuButton = new JButton("IMPORT");
     private final JButton exportMenuButton = new JButton("EXPORT");
 
 
     //declaration of buttons for side menu: SideBarMenu
-    private final JButton menuButton1 = new JButton("wiwi");
-    private final JButton menuButton2 = new JButton("wawa");
-    private final JButton menuButton3 = new JButton("I am billof");
-    private final JButton menuButton4 = new JButton("Hello");
+    private final JButton settingButton;
+    final JButton aboutButton;
 
 
-    
-    
-    //GUI  
+    //GUI
     public MainApp() {
 
 
-        //Holder (panel) for the Buttons: ADD,SEARCH,IMPORT,EXPORT
-        topMenu = new JPanel(new FlowLayout(FlowLayout.CENTER,40,0));
 
-        //we add the 4 buttons:
+        /*** Top holder (panel) for the Buttons: ADD,SEARCH,IMPORT,EXPORT ***/
+        topMenu = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 0));
 
-        topMenu.add(addCitationMenu);
-        addCitationMenu.setBorder(null);
-        addCitationMenu.setContentAreaFilled(false);
-        addCitationMenu.addActionListener( e->{
-            initialMainApp.removeAll();
-            int Height = initialMainApp.getHeight();
-            int Width = initialMainApp.getWidth();
-            addPanel = new AddCitation(Height,Width);
-
-            initialMainApp.add(addPanel);
-            initialMainApp.revalidate();
-
-            });
+        //Add citation:
+        topMenu.add(addCitationButton);
+        //styling
+        addCitationButton.setBorder(null);
+        addCitationButton.setContentAreaFilled(false);
 
 
-        topMenu.add(searchCitationMenu);
-        searchCitationMenu.addMouseListener(new MouseAdapter() {
+        addCitationButton.addActionListener(e -> { //action listener that call the AddCitation class
+
+            initialMainApp.removeAll();   //removing/closing any existing/previous panel on initialMainApp Panel
+            addPanel = new AddCitation(); //declaring Addcitation class
+            initialMainApp.add(addPanel); //adding it to the  main pannel
+            initialMainApp.revalidate(); //refreshing the panel
+
+        });
+
+        addCitationButton.addMouseListener(new MouseAdapter() { // mouse listener for cursor pointer (visual purpose)
             @Override
             public void mouseEntered(MouseEvent e) {
-                searchCitationMenu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                addCitationButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                searchCitationMenu.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                addCitationButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
         });
 
-        searchCitationMenu.setBorder(null);
-        searchCitationMenu.setContentAreaFilled(false);
-        searchCitationMenu.addActionListener( e->{
+        //Search Citation:
+        topMenu.add(searchCitationButton);
+
+
+        searchCitationButton.setBorder(null);
+        searchCitationButton.setContentAreaFilled(false);
+
+        searchCitationButton.addActionListener(e -> {
             initialMainApp.removeAll();
-            searchPanel = new SearchCitation(initialMainApp);
-            initialMainApp.add(searchPanel);
+            int width = initialMainApp.getWidth(); // we will pass the width of the pannel for use in the SearchCitation Class
+            searchPanel = new SearchCitation(width);
+            initialMainApp.add(searchPanel);//calling SearchCitation Class to the main panel
             initialMainApp.revalidate();
         });
+        searchCitationButton.addMouseListener(new MouseAdapter() { // mouse listener for cursor pointer (visual purpose)
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                searchCitationButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
 
+            @Override
+            public void mouseExited(MouseEvent e) {
+                searchCitationButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        });
+
+        // Import Menu:
         topMenu.add(importMenuButton);
+
+        importMenuButton.setBorder(null);
+        importMenuButton.setContentAreaFilled(false);
+
+        importMenuButton.addActionListener(e -> {
+
+            initialMainApp.removeAll();
+            importPanel = new ImportCitation(initialMainApp);
+            initialMainApp.add(importPanel);
+            initialMainApp.revalidate();
+
+        });
+
         importMenuButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -92,55 +120,63 @@ public class MainApp {
                 importMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
         });
-        importMenuButton.setBorder(null);
-        importMenuButton.setContentAreaFilled(false);
 
-        importMenuButton.addActionListener( e->{
-
-            initialMainApp.removeAll();
-            importPanel = new ImportCitation(initialMainApp);
-            initialMainApp.add(importPanel);
-            initialMainApp.revalidate();
-
-        });
-
+        // Export menu:
         topMenu.add(exportMenuButton);
+
         exportMenuButton.setBorder(null);
         exportMenuButton.setContentAreaFilled(false);
-        exportMenuButton.addActionListener( e->{
+
+        exportMenuButton.addActionListener(e -> {
             initialMainApp.removeAll();
             exportPanel = new ExportCitation(initialMainApp);
-            initialMainApp.add(exportPanel);
+            initialMainApp.add(exportPanel); //calling exportPanel Class
             initialMainApp.revalidate();
+        });
+
+        exportMenuButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                exportMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                exportMenuButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
         });
 
         topMenu.setBorder(BorderFactory.createTitledBorder("menu")); //black lines around
 
-        //Holder (panel) for main app
-        initialMainApp = new JPanel(new CardLayout());
+
+
+        /*** Central holder (panel) for execution of the main app ***/
+
+        initialMainApp = new JPanel(new CardLayout()); // card layout allows us to easily switch between panels
         initialMainApp.setBorder(BorderFactory.createTitledBorder("initial main menu"));
 
 
+        /*** Sidebar Holder (panel) ***/
 
-        //Holder (panel) vertical sidebar
         sideBarMenu = new JPanel();
-        
-        Box Vboxlayout = Box.createVerticalBox(); //vertical box layout for element veritaclly assigned
-        Vboxlayout.add(menuButton1);
-        Vboxlayout.add(menuButton2);
-        Vboxlayout.add(menuButton3);
-        Vboxlayout.add(menuButton4);
+        Box sideboxlayout = Box.createVerticalBox(); //vertical box layout for element veritaclly assigned
 
-       //SideBar
 
-      //Setting Button
-        JButton settingButton = new JButton("Settings",new ImageIcon("src/main/java/com/stir/cscu9t4assignment2021/static/settingIcon.png"));
+        //Setting & info Buttons
+
+        //Setting button
+        settingButton = new JButton("Settings", new ImageIcon("src/main/java/com/stir/cscu9t4assignment2021/static/settingIcon.png"));
+
         settingButton.setBorder(null);
         settingButton.setContentAreaFilled(false);
 
-        Vboxlayout.add(settingButton);
+        sideboxlayout.add(settingButton);
 
-        //event for hand cursor when hovering over the setting button
+        settingButton.addActionListener(e -> {
+            mainController settingController = new mainController(); // initialising the main Controller Class
+            settingController.settingTab();  // Calling the SettingTab Controller
+        });
+
         settingButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -153,18 +189,41 @@ public class MainApp {
             }
         });
 
-        settingButton.addActionListener(e-> {
+        //About button
+        sideboxlayout.add(Box.createVerticalStrut(10)); // verical white space for separation
+        aboutButton = new JButton("About", new ImageIcon("src/main/java/com/stir/cscu9t4assignment2021/static/About32.png"));
 
-        mainController settingController = new mainController();
-        settingController.settingTab();
+        aboutButton.setBorder(null);
+        aboutButton.setContentAreaFilled(false);
 
+        aboutButton.addActionListener(e -> {
+            mainController aboutTab = new mainController(); // initialising the main controller Class
+            aboutTab.aboutTab(); // Calling the aboutTab controller
         });
 
-        sideBarMenu.add(Vboxlayout);
-        sideBarMenu.setBorder(BorderFactory.createTitledBorder("sidebar"));
+        aboutButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                aboutButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                aboutButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        });
+        sideboxlayout.add(aboutButton);
 
 
-    //FRAME
+
+        //adding the vbox holding the buttons and sidebar lines
+        sideBarMenu.add(sideboxlayout);
+        sideBarMenu.setBorder(BorderFactory.createTitledBorder("Sidebar"));
+
+
+
+        /*** FRAME ***/
+
         JFrame frame = new JFrame("Citation App");
         frame.setLayout(new BorderLayout());      // This is the Parent layout
 
@@ -182,6 +241,5 @@ public class MainApp {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); //animation when opening app
 
 
-
-        }
     }
+}

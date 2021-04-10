@@ -1,8 +1,9 @@
 package com.stir.cscu9t4assignment2021.Model;
 
-import java.util.Date;
+import java.text.DateFormat;
 
 public class Citation {
+
 
     private String title;
     private String typeOfPublication;
@@ -10,63 +11,72 @@ public class Citation {
     private int yearOfPublication;
     private String nameOfpublisher;
     private String digitalObjectIdentifier;
-    private Date dateAdded;
+    private DateFormat dateAdded;
+
+
+    //with date (from user)
+    public Citation(String title, String[] authors, String digitalObjectIdentifier, String nameOfpublisher, int yearOfPublication, DateFormat dateAdded) {
+        this.title = title;
+        this.authors = authors;
+        this.digitalObjectIdentifier = digitalObjectIdentifier;
+        this.nameOfpublisher = nameOfpublisher;
+        this.yearOfPublication = yearOfPublication;
+        this.dateAdded = dateAdded;
+    }
+
+
+    //Without date (date added)
+    public Citation(String title, String[] authors, String digitalObjectIdentifier, String nameOfpublisher, int yearOfPublication) {
+        this.title = title;
+        this.authors = authors;
+        this.digitalObjectIdentifier = digitalObjectIdentifier;
+        this.nameOfpublisher = nameOfpublisher;
+        this.yearOfPublication = yearOfPublication;
+    }
+
+
 
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
 
     public String getTypeOfPublication() {
         return typeOfPublication;
     }
 
-    public void setTypeOfPublication(String typeOfPublication) {
-        this.typeOfPublication = typeOfPublication;
-    }
 
     public String getNameOfpublisher() {
         return nameOfpublisher;
     }
 
-    public void setNameOfpublisher(String nameOfpublisher) {
-        this.nameOfpublisher = nameOfpublisher;
-    }
+
 
     public String[] getAuthors() {
         return authors;
     }
 
-    public void setAuthors(String[] authors) {
-        this.authors = authors;
-    }
 
     public int getYearOfPublication() {
         return yearOfPublication;
     }
 
-    public void setYearOfPublication(int yearOfPublication) {
-        this.yearOfPublication = yearOfPublication;
-    }
 
-    public Date getDateAdded() {
+
+    public DateFormat getDateAdded() {
         return dateAdded;
     }
 
-    public void setDateAdded(Date dateAdded) {
-        this.dateAdded = dateAdded;
-    }
+
 
     public String getDigitalObjectIdentifier() {
         return digitalObjectIdentifier;
     }
 
-    public void setDigitalObjectIdentifier(String digitalObjectIdentifier) {
-        this.digitalObjectIdentifier = digitalObjectIdentifier;
-    }
+
+
+
 }
+
