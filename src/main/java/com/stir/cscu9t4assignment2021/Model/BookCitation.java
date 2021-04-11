@@ -5,7 +5,7 @@ import java.text.DateFormat;
 public class BookCitation extends Citation {
     private String editor,bookName;
 
-    public BookCitation(String title, String[] authors, String digitalObjectIdentifier , String publisher, int yearOfPublication, DateFormat dateAdded, String editor, String bookTitle) {
+    public BookCitation( String title, String[] authors, String digitalObjectIdentifier , String publisher, int yearOfPublication, DateFormat dateAdded, String editor, String bookTitle) {
         super(title, authors,digitalObjectIdentifier , publisher, yearOfPublication, dateAdded);
         this.editor = editor;
         this.bookName = bookTitle;
@@ -26,12 +26,7 @@ public class BookCitation extends Citation {
 
 
 
-    private String getCitation(){
-      return " \"BookCitation{\" +\n" +getBookName()+
-              "                \"editor='\" + editor + '\\'' +\\" +
-              "                \", bookName='\" + bookName + '\\'' +\\" +
-              "                '}';";
-    }
+
 
 
 }

@@ -6,7 +6,6 @@ public class Citation {
 
 
     private String title;
-    private String typeOfPublication;
     private String[] authors;
     private int yearOfPublication;
     private String nameOfpublisher;
@@ -43,11 +42,6 @@ public class Citation {
 
 
 
-    public String getTypeOfPublication() {
-        return typeOfPublication;
-    }
-
-
     public String getNameOfpublisher() {
         return nameOfpublisher;
     }
@@ -76,7 +70,10 @@ public class Citation {
     }
 
 
-
+    public String getCitation() {
+        String result = getTitle();
+        return result;
+    }
 
 }
 

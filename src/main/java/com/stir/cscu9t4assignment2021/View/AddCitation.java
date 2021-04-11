@@ -8,6 +8,8 @@ import com.stir.cscu9t4assignment2021.Model.JournalCitation;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,9 +22,9 @@ public class AddCitation extends JPanel {
     private JLabel titleLable = new JLabel("Title:");
     private JLabel authorsLabel = new JLabel("Authors:");
     private JLabel digitalObjectIdentifierLabel = new JLabel("DOI:");
-    private JLabel nameOfPublisherLabel = new JLabel("name of publication:");
+    private JLabel nameOfPublisherLabel = new JLabel("name of publisher:");
     private JLabel yearOfPublicationLabel = new JLabel("Year of publication:");
-    private JLabel dateAddedLabel = new JLabel("Date Added:");
+    private JLabel dateAddedLabel = new JLabel("Date Added: DD-MM-YYYY");
 
     //textFields
 
@@ -34,7 +36,9 @@ public class AddCitation extends JPanel {
     private JTextField yearsOfPublicationTextField = new JTextField();
 
     DateFormat dateformat = new SimpleDateFormat("dd-mm-yyyy");
-    private JFormattedTextField dateAddedTextField = new JFormattedTextField("dd-mm-yyyy");
+    private JFormattedTextField dateAddedTextField = new JFormattedTextField();
+
+
 
 
     //Buttons
@@ -47,7 +51,7 @@ public class AddCitation extends JPanel {
 
     //elements for  Journal paper
     private JLabel nameOfJournalLabel = new JLabel("Name of the journal:");
-    private JTextField nameofJournalTextFiel = new JTextField();
+    private JTextField nameofJournalTextField = new JTextField();
     private JLabel issueLabel = new JLabel(" Issue:");
     private JTextField issueTextField = new JTextField();
     private JLabel volumeLabel = new JLabel(" Volume:");
@@ -77,11 +81,11 @@ public class AddCitation extends JPanel {
 
     //private String typeOfPublication;
 
-    private String title;
+    private String title="";
     private String[] authors;
-    private String digitalObjectIdentifier;
-    private String nameOfpublisher;
-    private int yearOfPublication;
+    private String digitalObjectIdentifier="";
+    private String nameOfPublisher ="";
+    private int yearOfPublication=0;
     private Date dateAdded;
 
 
@@ -113,7 +117,7 @@ public class AddCitation extends JPanel {
             switch (selection) {
                 case 0:
                     box.add(nameOfJournalLabel);
-                    box.add(nameofJournalTextFiel);
+                    box.add(nameofJournalTextField);
 
                     box.add(issueLabel);
                     box.add(issueTextField);
@@ -141,9 +145,9 @@ public class AddCitation extends JPanel {
                     box.add(locationTextField);
 
                     box.remove(nameOfJournalLabel);
-                    box.remove(nameofJournalTextFiel);
+                    box.remove(nameofJournalTextField);
                     box.remove(issueLabel);
-                    box.remove(issueLabel);
+                    box.remove(issueTextField);
                     box.remove(volumeLabel);
                     box.remove(volumeTextField);
                     box.remove(bookTitleLabel);
@@ -164,7 +168,7 @@ public class AddCitation extends JPanel {
                     box.remove(conferenceNameTextField);
 
                     box.remove(nameOfJournalLabel);
-                    box.remove(nameofJournalTextFiel);
+                    box.remove(nameofJournalTextField);
                     box.remove(issueLabel);
                     box.remove(issueTextField);
                     box.remove(volumeLabel);
@@ -197,39 +201,50 @@ public class AddCitation extends JPanel {
         box.add(digitalObjectIdentifierTextField);
         box.add(dateAddedLabel);
         box.add(dateAddedTextField);
+        //journal paper entry is set to the default
+        box.add(Box.createVerticalStrut(50));
+        box.add(nameOfJournalLabel);
+        box.add(nameofJournalTextField);
+
+        box.add(issueLabel);
+        box.add(issueTextField);
+
+        box.add(volumeLabel);
+        box.add(volumeTextField);
         box.add(Box.createVerticalStrut(50));
 
 
         box.add(submitCitation);
 
+        /** ADD button UI **/
+
+        //Mouse listener for cursor pointer in add button
+        submitCitation.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                submitCitation.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                submitCitation.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+        });
 
         /*** Functionality for add button ***/
 
         submitCitation.addActionListener(e -> {
 
-            try {
-                title = titleTextField.getText();
-                authors = authorsTextField.toString().split("");
-                digitalObjectIdentifier = digitalObjectIdentifierTextField.getText();
-                nameOfpublisher = nameOfPublisherTextField.getText();
-                yearOfPublication = Integer.parseInt(yearsOfPublicationTextField.getText());
 
-                //journal
-                nameOfJournal = nameofJournalTextFiel.getText();
-                issue = Integer.parseInt(issueTextField.getText());
-                volume = Integer.parseInt(volumeTextField.getText());
+                    title = titleTextField.getText();
+                    authors = authorsTextField.toString().split(";"); /** to be modified **/
+                    digitalObjectIdentifier = digitalObjectIdentifierTextField.getText();
+                    nameOfPublisher = nameOfPublisherTextField.getText();
+                    yearOfPublication = Integer.parseInt(yearsOfPublicationTextField.getText());
+
+                    JOptionPane.showMessageDialog(null,"The entry has been successfully added to the record !");
 
 
-                //conference
-                conferenceName = conferenceNameTextField.getText();
-                location = locationTextField.getText();
-
-                //book
-                editor = editorTextField.getText();
-                bookTitle = bookTitleTextField.getText();
-            }catch (Exception exception){
-                System.out.println("missing info!");
-            }
 
 
 
@@ -237,24 +252,45 @@ public class AddCitation extends JPanel {
 
             switch (selection) {
                 case 0: //journal paper
+                    nameOfJournal = nameofJournalTextField.getText();
+                    issue = Integer.parseInt(issueTextField.getText());
+                    volume = Integer.parseInt(volumeTextField.getText());
                     CitationController newJournalCit = new CitationController();
-                    collectionOfCitation = new JournalCitation(title,authors, digitalObjectIdentifier,nameOfpublisher,yearOfPublication,nameofJournalTextFiel.getText(),issue,volume);
+                    collectionOfCitation = new JournalCitation(title,authors, digitalObjectIdentifier, nameOfPublisher,yearOfPublication,nameOfJournal,issue,volume);
                     newJournalCit.addCitation(collectionOfCitation);
                     break;
                 case 1: //conference
+                    conferenceName = conferenceNameTextField.getText();
+                    location = locationTextField.getText();
                     CitationController newConferenceCit = new CitationController();
-                    collectionOfCitation = new ConferenceCitation(titleTextField.getText(),authors, digitalObjectIdentifierTextField.getText(),nameOfPublisherTextField.getText(),yearOfPublication,conferenceName,location);
+                    collectionOfCitation = new ConferenceCitation(titleTextField.getText(),authors, digitalObjectIdentifier,nameOfPublisher,yearOfPublication,conferenceName,location);
                     newConferenceCit.addCitation(collectionOfCitation);
                     break;
                 case 2: //book
+                    editor = editorTextField.getText();
+                    bookTitle = bookTitleTextField.getText();
                     CitationController newBookCit = new CitationController();
-                    collectionOfCitation = new BookCitation(titleTextField.getText(),authors, digitalObjectIdentifierTextField.getText(),nameOfPublisherTextField.getText(),yearOfPublication,editor,bookTitle);
+                    collectionOfCitation = new BookCitation(titleTextField.getText(),authors, digitalObjectIdentifier,nameOfPublisher,yearOfPublication,editor,bookTitle);
                     newBookCit.addCitation(collectionOfCitation);
                     break;
             }
 
 
-            //newCitation.insertCitation();
+            /*** Clearing all the JTextfields ***/
+            titleTextField.setText(null);
+            authorsTextField.setText(null);
+            yearsOfPublicationTextField.setText(null);
+            nameOfPublisherTextField.setText(null);
+            digitalObjectIdentifierTextField.setText(null);
+            dateAddedTextField.setText(null);
+            nameofJournalTextField.setText(null);
+            issueTextField.setText(null);
+            volumeTextField.setText(null);
+            conferenceNameTextField.setText(null);
+            locationTextField.setText(null);
+            bookTitleTextField.setText(null);
+            editorTextField.setText(null);
+
         });
 
 
