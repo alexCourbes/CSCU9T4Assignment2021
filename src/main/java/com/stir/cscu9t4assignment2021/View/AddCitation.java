@@ -43,8 +43,7 @@ public class AddCitation extends JPanel {
     private JFormattedTextField dateAddedTextField = new JFormattedTextField();
 
     //Date
-         JCheckBox automaticDateAdded =  new JCheckBox("Today's date",false);
-
+    JCheckBox automaticDateAdded = new JCheckBox("Today's date", false);
 
 
     //Buttons
@@ -62,7 +61,7 @@ public class AddCitation extends JPanel {
     private JTextField issueTextField = new JTextField();
     private JLabel volumeLabel = new JLabel(" Volume:");
     private JTextField volumeTextField = new JTextField();
-    private  int issue,volume;
+    private int issue, volume;
     private String nameOfJournal;
 
     //elements for Conference paper
@@ -70,14 +69,14 @@ public class AddCitation extends JPanel {
     private JTextField conferenceNameTextField = new JTextField();
     private JLabel locationLabel = new JLabel("venue:");
     private JTextField locationTextField = new JTextField();
-    private String conferenceName,location;
+    private String conferenceName, location;
 
     //elements for Book Chapter
     private JLabel bookTitleLabel = new JLabel("Title of the book:");
     private JTextField bookTitleTextField = new JTextField();
     private JLabel editorLabel = new JLabel("editor:");
     private JTextField editorTextField = new JTextField();
-    private  String bookTitle, editor;
+    private String bookTitle, editor;
 
 
     private JPanel initialAddApp;
@@ -87,15 +86,12 @@ public class AddCitation extends JPanel {
 
     //private String typeOfPublication;
 
-    private String title="";
+    private String title = "";
     private String[] authors;
-    private String digitalObjectIdentifier="";
-    private String nameOfPublisher ="";
-    private int yearOfPublication=0;
+    private String digitalObjectIdentifier = "";
+    private String nameOfPublisher = "";
+    private int yearOfPublication = 0;
     private Date dateAdded;
-
-
-
 
 
     //where we will later group cthe elements above:
@@ -244,17 +240,16 @@ public class AddCitation extends JPanel {
 
         /*** Functionality for Date Cehckbox ***/
 
-        automaticDateAdded.addActionListener(e->{
+        automaticDateAdded.addActionListener(e -> {
 
 
-
-            if (automaticDateAdded.isSelected()){
+            if (automaticDateAdded.isSelected()) {
                 dateAddedTextField.setEnabled(false);
 
                 dateAdded = new Date();
 
 
-            }else {
+            } else {
                 dateAddedTextField.setEnabled(true);
             }
 
@@ -266,15 +261,18 @@ public class AddCitation extends JPanel {
         submitCitation.addActionListener(e -> {
 
 
-                    title = titleTextField.getText();
-                    authors = authorsTextField.toString().split(";"); /** to be modified **/
-                    digitalObjectIdentifier = digitalObjectIdentifierTextField.getText();
-                    nameOfPublisher = nameOfPublisherTextField.getText();
-                    yearOfPublication = Integer.parseInt(yearsOfPublicationTextField.getText());
+            title = titleTextField.getText();
 
-                    JOptionPane.showMessageDialog(null,"The entry has been successfully added to the record !");
+            authors = authorsTextField.getText().split(";"); /** to be modified **/
 
-
+            digitalObjectIdentifier = digitalObjectIdentifierTextField.getText();
+            nameOfPublisher = nameOfPublisherTextField.getText();
+            try {
+                yearOfPublication = Integer.parseInt(yearsOfPublicationTextField.getText());
+            } catch (NumberFormatException exception) {
+                yearOfPublication = 0;
+                JOptionPane.showMessageDialog(null, "Year field is missing! year has been set to 0");
+            }
 
 
 
@@ -283,28 +281,39 @@ public class AddCitation extends JPanel {
             switch (selection) {
                 case 0: //journal paper
                     nameOfJournal = nameofJournalTextField.getText();
-                    issue = Integer.parseInt(issueTextField.getText());
-                    volume = Integer.parseInt(volumeTextField.getText());
+                    try {
+                        issue = Integer.parseInt(issueTextField.getText());
+
+                    } catch (NumberFormatException exception) {
+                        issue = 0;
+                        JOptionPane.showMessageDialog(null, "Issue field missing, issue set to 0");
+                    }
+                    try {
+                        volume = Integer.parseInt(volumeTextField.getText());
+                    } catch (NumberFormatException exception) {
+                        volume = 0;
+                        JOptionPane.showMessageDialog(null, "Volume field missing, Volume set to 0");
+                    }
                     CitationController newJournalCit = new CitationController();
-                    collectionOfCitation = new JournalCitation(title,authors, digitalObjectIdentifier, nameOfPublisher,yearOfPublication,nameOfJournal,issue,volume);
+                    collectionOfCitation = new JournalCitation(title, authors, digitalObjectIdentifier, nameOfPublisher, yearOfPublication, dateAdded, nameOfJournal, issue, volume);
                     newJournalCit.addCitation(collectionOfCitation);
                     break;
                 case 1: //conference
                     conferenceName = conferenceNameTextField.getText();
                     location = locationTextField.getText();
                     CitationController newConferenceCit = new CitationController();
-                    collectionOfCitation = new ConferenceCitation(titleTextField.getText(),authors, digitalObjectIdentifier,nameOfPublisher,yearOfPublication,conferenceName,location);
+                    collectionOfCitation = new ConferenceCitation(titleTextField.getText(), authors, digitalObjectIdentifier, nameOfPublisher, yearOfPublication, dateAdded, conferenceName, location);
                     newConferenceCit.addCitation(collectionOfCitation);
                     break;
                 case 2: //book
                     editor = editorTextField.getText();
                     bookTitle = bookTitleTextField.getText();
                     CitationController newBookCit = new CitationController();
-                    collectionOfCitation = new BookCitation(titleTextField.getText(),authors, digitalObjectIdentifier,nameOfPublisher,yearOfPublication,editor,bookTitle);
+                    collectionOfCitation = new BookCitation(titleTextField.getText(), authors, digitalObjectIdentifier, nameOfPublisher, yearOfPublication, dateAdded, editor, bookTitle);
                     newBookCit.addCitation(collectionOfCitation);
                     break;
             }
-
+            JOptionPane.showMessageDialog(null, "The entry has been successfully added to the record !");
 
             /*** Clearing all the JTextfields ***/
             titleTextField.setText(null);

@@ -30,7 +30,7 @@ public class CitationController {
         String title, doi, publisher, journalName;
         String location = null;
         String editor = null;
-        String[] authors;
+        String authors;
 
         Object[] allrows = new Object[iCit];
 
@@ -40,12 +40,12 @@ public class CitationController {
             if (i instanceof JournalCitation) {
                 Object[] row = new Object[11];
                 title = (((JournalCitation) i).getTitle());
-                authors = (((JournalCitation) i).getAuthors());
+                authors = String.join(",",i.getAuthors());
                 doi = (((JournalCitation) i).getDigitalObjectIdentifier());
                 publisher = (((JournalCitation) i).getNameOfpublisher());
                 journalName = (((JournalCitation) i).getJournalName());
                 int year = (((JournalCitation) i).getYearOfPublication());
-                DateFormat date = (((JournalCitation) i).getDateAdded());
+                String date = (((JournalCitation) i).getDateToString());
                 int issue = (((JournalCitation) i).getIssue());
                 int volume = (((JournalCitation) i).getVolume());
 
@@ -72,11 +72,60 @@ public class CitationController {
         return allrows;
     }
 
+
+
+    public Object[]  getCitationsJournalFromSearch (String journalNameUser){
+        String title, doi, publisher, journalName;
+        String location = null;
+        String editor = null;
+        String authors;
+
+        Object[] allrows = new Object[iCit];
+
+        int lenght = 0;
+        for (Citation i : citationList) {
+
+            if (i instanceof JournalCitation) {
+                Object[] row = new Object[11];
+                title = (((JournalCitation) i).getTitle());
+                authors = String.join(",",i.getAuthors());
+                doi = (((JournalCitation) i).getDigitalObjectIdentifier());
+                publisher = (((JournalCitation) i).getNameOfpublisher());
+                journalName = (((JournalCitation) i).getJournalName());
+                int year = (((JournalCitation) i).getYearOfPublication());
+                String date = (((JournalCitation) i).getDateToString());
+                int issue = (((JournalCitation) i).getIssue());
+                int volume = (((JournalCitation) i).getVolume());
+
+                row[0] = title;
+                row[1] = authors;
+                row[2] = doi;
+                row[3] = publisher;
+                row[4] = journalName;
+
+                row[5] = year;
+                row[6] = date;
+
+                row[7] = issue;
+                row[8] = volume;
+
+                row[9] = editor;
+                row[10] = location;
+                if (journalNameUser.equals(row[4])) {
+                    allrows[lenght] = row;
+                }
+
+            }
+            lenght++;
+        }
+        return allrows;
+    }
+
     public Object[] getCitationsConference() {
 
         String title, doi, publisher, conferenceName, location;
         String editor = null;
-        String[] authors;
+        String authors;
 
         Object[] allrows = new Object[iCit];
 
@@ -86,14 +135,14 @@ public class CitationController {
             if (i instanceof ConferenceCitation) {
                 Object[] row = new Object[11];
                 title = (((ConferenceCitation) i).getTitle());
-                authors = (((ConferenceCitation) i).getAuthors());
+                authors = String.join(",",i.getAuthors());
                 doi = (((ConferenceCitation) i).getDigitalObjectIdentifier());
                 publisher = (((ConferenceCitation) i).getNameOfpublisher());
                 conferenceName = (((ConferenceCitation) i).getVenue());
                 location = (((ConferenceCitation) i).getLocation());
                 int year = (((ConferenceCitation) i).getYearOfPublication());
 
-                DateFormat date = (((ConferenceCitation) i).getDateAdded());
+                String date = (((ConferenceCitation) i).getDateToString());
 
                 int issue = 0;
                 int volume = 0;
@@ -126,9 +175,9 @@ public class CitationController {
 
     public Object[] getCitationsBook() {
 
-        String title, doi, publisher, bookName, editor,authorsTring;
+        String title, doi, publisher, bookName, editor;
         String location=null;
-        String[] authors;
+        String authors;
 
         Object[] allrows = new Object[iCit];
 
@@ -138,14 +187,14 @@ public class CitationController {
             if (i instanceof BookCitation) {
                 Object[] row = new Object[11];
                 title = (((BookCitation) i).getTitle());
-                authors = (((BookCitation) i).getAuthors());
+                authors = String.join(",",i.getAuthors());
                 doi = (((BookCitation) i).getDigitalObjectIdentifier());
                 publisher = (((BookCitation) i).getNameOfpublisher());
                 bookName=(((BookCitation) i).getBookName());
                 editor = (((BookCitation) i).getEditor());
                 int year = (((BookCitation) i).getYearOfPublication());
 
-                DateFormat date = (((BookCitation) i).getDateAdded());
+                String date = (((BookCitation) i).getDateToString());
 
                 int issue = 0;
                 int volume = 0;
@@ -157,6 +206,7 @@ public class CitationController {
                 row[4] = bookName;
 
                 row[5] = year;
+
                 row[6] = date;
 
                 row[7] = issue;
@@ -178,11 +228,3 @@ public class CitationController {
 
 
 
-
-
-//            if (i instanceof BookCitation) {
-//                System.out.println(((BookCitation) i).getBookName());
-//            }
-//            if (i instanceof ConferenceCitation) {
-//                //System.out.println(((ConferenceCitation) i).());
-//            }

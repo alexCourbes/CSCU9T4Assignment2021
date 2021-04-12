@@ -13,13 +13,6 @@ import java.util.Vector;
 
 public class SearchCitation extends JPanel {
 
-    private String Title;
-    private String TypeOfPublication;
-    private String[] Authors;
-    private int YearOfPublication;
-    private String NameOfpublisher;
-    private String DigitalObjectIdentifier;
-    private Date DateAdded;
 
     private JPanel initialAddApp;
 
@@ -27,14 +20,35 @@ public class SearchCitation extends JPanel {
 
     private JTable citTable;
 
+    /**
+     * JButtons:  & filter
+     **/
+
     private JButton searchButton = new JButton(new ImageIcon("src/main/java/com/stir/cscu9t4assignment2021/static/searchButtonImage-96.png"));
+    private JButton filterButton = new JButton(new ImageIcon("src/main/java/com/stir/cscu9t4assignment2021/static/Filter-96.png"));
+    /**
+     * JCheckbox:Order Alphabetically of Author
+     ***/
+    private JCheckBox orderAlphabetically = new JCheckBox("Order Alphabetically", false);
+
+    /***FIND ALL BY**/
+    String[] filterByTypeOptions = {"Citation", "Venue", "Publisher"};
+    private JComboBox findBy = new JComboBox(filterByTypeOptions);
+
+
+    //Find all by Journal
+
+    //Find all by Conference Venue
+
+    //Find all by Publisher
 
 
     /*** Search Fields ***/
 
     //filter by type
     private JLabel filterByTypeLabel = new JLabel("Filter by Type");
-    String[] filterByTypeOptions = {"Journal", "Conference", "Book"};
+
+    String[] filterByTypeOp = {"Journal", "Conference", "Book"};
     private JComboBox filterByType = new JComboBox(filterByTypeOptions);
 
     //filter by
@@ -50,9 +64,41 @@ public class SearchCitation extends JPanel {
 
         box.add(Box.createVerticalStrut(25));
         Border roundedBorder = new LineBorder(Color.lightGray, 2, true);
+
         searchBar.setBorder(roundedBorder);
+        box.add(findBy);
+        box.add(Box.createVerticalStrut(25));
 
         box.add(searchBar);
+
+
+        Box searchFilterBox = Box.createHorizontalBox();
+        box.add(filterButton);
+        Box.createRigidArea(new Dimension(200, 200));
+        filterButton.setContentAreaFilled(false);
+        filterButton.setBorderPainted(false);
+
+
+//
+//        findBy.setRenderer(new DefaultListCellRenderer() {
+//
+//            String[] filterByTypeOptions = {"Journal", "Conference", "Book"};
+//
+//            @Override
+//            public Component getListCellRendererComponent(JList list, Object value,
+//                                                          int index, boolean isSelected, boolean hasFocus) {
+//                index=-1;
+//                value=null;
+//                value=filterByTypeOptions;
+//                if (index == -1 && value == null)
+//                    setText("Find All");
+//                else
+//                    setText(value.toString());
+//                return this;
+//            }
+//
+//        });
+
 
         searchBar.setPreferredSize(new Dimension(width - 275, 23));
         box.add(Box.createVerticalStrut(20));
@@ -94,31 +140,28 @@ public class SearchCitation extends JPanel {
         int numberOfBookRows = conferenceRows.length;
 
 
-                if (journalRows.length >= 1) {
-                    for (int i = 0; i < numberOfJournalRows; i++) {
-                        if (!(journalRows[i] == null)) {
-                            model.addRow((Object[]) journalRows[i]); // Adding all the rows
-                        }
-                    }
+        if (journalRows.length >= 1) {
+            for (int i = 0; i < numberOfJournalRows; i++) {
+                if (!(journalRows[i] == null)) {
+                    model.addRow((Object[]) journalRows[i]); // Adding all the rows
                 }
+            }
+        }
 
-                if (conferenceRows.length >= 1) {
-                    for (int i = 0; i < numberOfConferenceRows; i++) {
-                        if (!(conferenceRows[i] == null)) {
-                            model.addRow((Object[]) conferenceRows[i]);
-                        }
-                    }
+        if (conferenceRows.length >= 1) {
+            for (int i = 0; i < numberOfConferenceRows; i++) {
+                if (!(conferenceRows[i] == null)) {
+                    model.addRow((Object[]) conferenceRows[i]);
                 }
-                if (bookRow.length >= 1) {
-                    for (int i = 0; i < numberOfBookRows; i++) {
-                        if (!(bookRow[i] == null)) {
-                            model.addRow((Object[]) bookRow[i]);
-                        }
-                    }
+            }
+        }
+        if (bookRow.length >= 1) {
+            for (int i = 0; i < numberOfBookRows; i++) {
+                if (!(bookRow[i] == null)) {
+                    model.addRow((Object[]) bookRow[i]);
                 }
-
-
-
+            }
+        }
 
 
         searchButton.setBorderPainted(false);
@@ -133,47 +176,81 @@ public class SearchCitation extends JPanel {
         add(searchButton);
 
         /**Filter by Functionality**/
-    searchButton.addActionListener(e->{
-        model.setRowCount(0);
-        int selection = filterByType.getSelectedIndex(); //get the index of the element selected
-        switch (selection) {
+        searchButton.addActionListener(e->{
+            model.setRowCount(0);
+            int selection = filterByType.getSelectedIndex(); //get the index of the element selected
+            switch (selection) {
 
-            case 0:
-                Object[] onlyJournalRows = new Object[10];
-                onlyJournalRows = allCitation.getCitationsJournal();
-                if (onlyJournalRows.length >= 1) {
-                    for (int i = 0; i < numberOfJournalRows; i++) {
-                        if (!(onlyJournalRows[i] == null)) {
-                            model.addRow((Object[]) onlyJournalRows[i]); // Adding all the rows
+                case 0:
+                    Object[] onlyJournalRows = new Object[10];
+                    onlyJournalRows = allCitation.getCitationsJournal();
+                    if (onlyJournalRows.length >= 1) {
+                        for (int i = 0; i < numberOfJournalRows; i++) {
+                            if (!(onlyJournalRows[i] == null)) {
+                                model.addRow((Object[]) onlyJournalRows[i]); // Adding all the rows
+                            }
                         }
                     }
-                }
-                break;
-            case 1:
-                Object[] conferenceOnlyRows = new Object[10];
-                conferenceOnlyRows = allCitation.getCitationsConference();
-                if (conferenceOnlyRows.length >= 1) {
-                    for (int i = 0; i < numberOfConferenceRows; i++) {
-                        if (!(conferenceOnlyRows[i] == null)) {
-                            model.addRow((Object[]) conferenceOnlyRows[i]);
+                    break;
+                case 1:
+                    Object[] conferenceOnlyRows = new Object[10];
+                    conferenceOnlyRows = allCitation.getCitationsConference();
+                    if (conferenceOnlyRows.length >= 1) {
+                        for (int i = 0; i < numberOfConferenceRows; i++) {
+                            if (!(conferenceOnlyRows[i] == null)) {
+                                model.addRow((Object[]) conferenceOnlyRows[i]);
+                            }
                         }
                     }
-                }
-            case 2:
-                Object[] bookOnlyRow = new Object[10];
-                bookOnlyRow = allCitation.getCitationsBook();
-                if (bookOnlyRow.length >= 1) {
-                    for (int i = 0; i < numberOfBookRows; i++) {
-                        if (!(bookOnlyRow[i] == null)) {
-                            model.addRow((Object[]) bookOnlyRow[i]);
+                case 2:
+                    Object[] bookOnlyRow = new Object[10];
+                    bookOnlyRow = allCitation.getCitationsBook();
+                    if (bookOnlyRow.length >= 1) {
+                        for (int i = 0; i < numberOfBookRows; i++) {
+                            if (!(bookOnlyRow[i] == null)) {
+                                model.addRow((Object[]) bookOnlyRow[i]);
+                            }
                         }
                     }
-                }
 
 
+            }
+        });
 
-        }
-    });
+        /*** JCOMBO BOX ***/
+
+
+        Object[] finalJournalRows = journalRows;
+        filterButton.addActionListener(e -> {
+            int index = findBy.getSelectedIndex();
+            String userInput = searchBar.getText();
+            switch (index) {
+
+
+                case 0: //Name of journal
+
+                    model.setRowCount(0);
+                    Object[] journalRowsFromSearch = new Object[10];
+                    journalRowsFromSearch = allCitation.getCitationsJournalFromSearch(userInput);
+                    int numberOfJournalRowsFromSearch = journalRowsFromSearch.length;
+
+                    for (int i = 0; i < numberOfJournalRowsFromSearch; i++) {
+                        if (!(journalRowsFromSearch[i] == null)) {
+                            model.addRow((Object[]) journalRowsFromSearch[i]); // Adding all the rows
+                        }
+                    }
+                    break;
+                case 1: //Venue
+
+                    break;
+
+                case 2: //Publisher
+
+                    break;
+
+            }
+        });
+
 
         setLayout(new FlowLayout(FlowLayout.LEFT));
 

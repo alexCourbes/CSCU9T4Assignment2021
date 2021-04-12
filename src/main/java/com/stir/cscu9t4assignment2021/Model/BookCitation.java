@@ -6,6 +6,7 @@ import java.util.Date;
 public class BookCitation extends Citation {
     private String editor,bookName;
 
+
     public BookCitation(String title, String[] authors, String digitalObjectIdentifier , String publisher, int yearOfPublication, Date dateAdded, String editor, String bookTitle) {
         super(title, authors,digitalObjectIdentifier , publisher, yearOfPublication, dateAdded);
         this.editor = editor;

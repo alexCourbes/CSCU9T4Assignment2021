@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<citation>
+    <ref citationType="JournalCitation">
+        <title>Title-B-0</title>
+        <authors>Jason Adair</authors>
+        <doi>533/49</doi>
+        <publisher>ACM</publisher>
+        <publicationYear>2015</publicationYear>
+        <dateAdded> 06/02/2021 </dateAdded>
+        <journal>journal-s</journal>
+        <volume>9</volume>
+        <issue>8</issue>
+        
+    </ref>
+    <ref citationType="ConferenceCitation">
+        <title>Title-A-0</title>
+        <authors>Heidi Brynjolfsdottir</authors>
+        <doi>765/1773</doi>
+        <publisher>ACM</publisher>
+        <publicationYear>1999</publicationYear>
+        <dateAdded> 23/03/2021 </dateAdded>
+        <venue>Conference-3</venue>
+        <location>Location-U</location>
+    </ref>
+    <ref citationType="BookCitation">
+        <title>Title-D-0</title>
+        <authors>Jason Adair</authors>
+        <doi>202/1031</doi>
+        <publisher>ACM</publisher>
+        <publicationYear>2006</publicationYear>
+        <dateAdded> 08/05/2021 </dateAdded>
+        <book>book-a</book>
+        <editor>Mina Mouse</editor>
+    </ref>
+    <ref citationType="JournalCitation">
+        <title>Title-G-1</title>
+        <authors>Kevin Bacon</authors>
+        <doi>580/491</doi>
+        <publisher>IEEE</publisher>
+        <publicationYear>2007</publicationYear>
+        <dateAdded> 13/02/2021 </dateAdded>
+        <journal>journal-x</journal>
+        <volume>5</volume>
+        <issue>5</issue>
+    </ref>
+    <ref citationType="ConferenceCitation">
+        <title>Title-C-1</title>
+        <authors>Kevin Bacon</authors>
+        <doi>611/1124</doi>
+        <publisher>Springer</publisher>
+        <publicationYear>2019</publicationYear>
+        <dateAdded> 23/11/2021 </dateAdded>
+        <venue>Conference-2</venue>
+        <location>Location-R</location>
+    </ref>
+    <ref citationType="BookCitation">
+        <title>Title-F-1</title>
+        <authors>Jason Adair</authors>
+        <doi>741/1240</doi>
+        <publisher>Springer</publisher>
+        <publicationYear>2016</publicationYear>
+        <dateAdded> 14/06/2021 </dateAdded>
+        <book>book-g</book>
+        <editor>Mina Mouse</editor>
+    </ref>
+    <ref citationType="JournalCitation">
+        <title>Title-F-2</title>
+        <authors>Saemi Haraldsson</authors>
+        <doi>1045/875</doi>
+        <publisher>Springer</publisher>
+        <publicationYear>2004</publicationYear>
+        <dateAdded> 27/10/2021 </dateAdded>
+        <journal>journal-z</journal>
+        <volume>5</volume>
+        <issue>1</issue>
+    </ref>
+    <ref citationType="ConferenceCitation">
+        <title>Title-A-2</title>
+        <authors>Heidi Brynjolfsdottir</authors>
+        <doi>71/902</doi>
+        <publisher>ACM</publisher>
+        <publicationYear>2009</publicationYear>
+        <dateAdded> 19/10/2021 </dateAdded>
+        <venue>Conference-3</venue>
+        <location>Location-Y</location>
+    </ref>
+    
+</citation>

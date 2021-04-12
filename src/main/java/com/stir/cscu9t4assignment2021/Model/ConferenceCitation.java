@@ -1,6 +1,7 @@
 package com.stir.cscu9t4assignment2021.Model;
 
 import java.text.DateFormat;
+import java.util.Date;
 
 public class ConferenceCitation extends Citation {
 
@@ -8,7 +9,7 @@ public class ConferenceCitation extends Citation {
 
 
     //with date
-    public ConferenceCitation(String title, String[] authors, String digitalObjectIdentifier, String publisher, int yearOfPublication, DateFormat dateAdded, String conferenceName, String location) {
+    public ConferenceCitation(String title, String[] authors, String digitalObjectIdentifier, String publisher, int yearOfPublication, Date dateAdded, String conferenceName, String location) {
         super(title, authors, digitalObjectIdentifier, publisher, yearOfPublication,dateAdded);
         this.conferenceName = conferenceName;
         this.location = location;

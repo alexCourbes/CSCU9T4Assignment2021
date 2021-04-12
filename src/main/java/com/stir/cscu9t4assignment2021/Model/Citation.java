@@ -1,6 +1,5 @@
 package com.stir.cscu9t4assignment2021.Model;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -61,12 +60,17 @@ public class Citation {
 
 
 
-    public String getDateAdded() {
-        SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+    public Date getDateAdded() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        return date.parse(dateAdded);
+        return  dateAdded;
     }
 
+    public String getDateToString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        return  sdf.format(dateAdded);
+    }
 
 
     public String getDigitalObjectIdentifier() {

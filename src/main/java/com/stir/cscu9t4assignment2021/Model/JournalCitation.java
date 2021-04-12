@@ -7,7 +7,7 @@ public class JournalCitation extends Citation {
 
     private String journalName;
     private int issue,volume;
-    private Date dateAdded;
+
 
     //program defines date
     public JournalCitation( String title, String[] authors, String digitalObjectIdentifier, String nameOfPublisher, int yearOfPublication, Date dateAdded, String journalName, int issue, int volume) {
