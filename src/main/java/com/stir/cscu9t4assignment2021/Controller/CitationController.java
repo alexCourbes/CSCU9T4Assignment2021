@@ -6,10 +6,7 @@ import com.stir.cscu9t4assignment2021.Model.ConferenceCitation;
 import com.stir.cscu9t4assignment2021.Model.JournalCitation;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 public class CitationController {
 
@@ -95,7 +92,9 @@ public class CitationController {
                 conferenceName = (((ConferenceCitation) i).getVenue());
                 location = (((ConferenceCitation) i).getLocation());
                 int year = (((ConferenceCitation) i).getYearOfPublication());
+
                 DateFormat date = (((ConferenceCitation) i).getDateAdded());
+
                 int issue = 0;
                 int volume = 0;
 
@@ -145,7 +144,9 @@ public class CitationController {
                 bookName=(((BookCitation) i).getBookName());
                 editor = (((BookCitation) i).getEditor());
                 int year = (((BookCitation) i).getYearOfPublication());
+
                 DateFormat date = (((BookCitation) i).getDateAdded());
+
                 int issue = 0;
                 int volume = 0;
 

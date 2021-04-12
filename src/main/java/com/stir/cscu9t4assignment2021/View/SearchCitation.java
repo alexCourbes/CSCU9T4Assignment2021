@@ -33,7 +33,9 @@ public class SearchCitation extends JPanel {
     /*** Search Fields ***/
 
     //filter by type
-
+    private JLabel filterByTypeLabel = new JLabel("Filter by Type");
+    String[] filterByTypeOptions = {"Journal", "Conference", "Book"};
+    private JComboBox filterByType = new JComboBox(filterByTypeOptions);
 
     //filter by
 
@@ -65,7 +67,7 @@ public class SearchCitation extends JPanel {
         citTable = new JTable();
         //model for the table
 
-        DefaultTableModel model = new DefaultTableModel(){
+        DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -91,27 +93,31 @@ public class SearchCitation extends JPanel {
         int numberOfConferenceRows = conferenceRows.length;
         int numberOfBookRows = conferenceRows.length;
 
-        if (journalRows.length >= 1) {
-            for (int i = 0; i < numberOfJournalRows; i++) {
-                if (!(journalRows[i] == null)) {
-                    model.addRow((Object[]) journalRows[i]); // Adding all the rows
+
+                if (journalRows.length >= 1) {
+                    for (int i = 0; i < numberOfJournalRows; i++) {
+                        if (!(journalRows[i] == null)) {
+                            model.addRow((Object[]) journalRows[i]); // Adding all the rows
+                        }
+                    }
                 }
-            }
-        }
-        if (conferenceRows.length >= 1) {
-            for (int i = 0; i < numberOfConferenceRows; i++) {
-                if (!(conferenceRows[i] == null)) {
-                    model.addRow((Object[]) conferenceRows[i]);
+
+                if (conferenceRows.length >= 1) {
+                    for (int i = 0; i < numberOfConferenceRows; i++) {
+                        if (!(conferenceRows[i] == null)) {
+                            model.addRow((Object[]) conferenceRows[i]);
+                        }
+                    }
                 }
-            }
-        }
-        if (bookRow.length >= 1) {
-            for (int i = 0; i < numberOfBookRows; i++) {
-                if (!(bookRow[i] == null)) {
-                    model.addRow((Object[]) bookRow[i]);
+                if (bookRow.length >= 1) {
+                    for (int i = 0; i < numberOfBookRows; i++) {
+                        if (!(bookRow[i] == null)) {
+                            model.addRow((Object[]) bookRow[i]);
+                        }
+                    }
                 }
-            }
-        }
+
+
 
 
 
@@ -119,8 +125,55 @@ public class SearchCitation extends JPanel {
         searchButton.setContentAreaFilled(false);
         box.add(new JScrollPane(citTable));
         add(box);
+
+        add(Box.createHorizontalStrut(220));
+
+        add(filterByTypeLabel);
+        add(filterByType);
         add(searchButton);
 
+        /**Filter by Functionality**/
+    searchButton.addActionListener(e->{
+        model.setRowCount(0);
+        int selection = filterByType.getSelectedIndex(); //get the index of the element selected
+        switch (selection) {
+
+            case 0:
+                Object[] onlyJournalRows = new Object[10];
+                onlyJournalRows = allCitation.getCitationsJournal();
+                if (onlyJournalRows.length >= 1) {
+                    for (int i = 0; i < numberOfJournalRows; i++) {
+                        if (!(onlyJournalRows[i] == null)) {
+                            model.addRow((Object[]) onlyJournalRows[i]); // Adding all the rows
+                        }
+                    }
+                }
+                break;
+            case 1:
+                Object[] conferenceOnlyRows = new Object[10];
+                conferenceOnlyRows = allCitation.getCitationsConference();
+                if (conferenceOnlyRows.length >= 1) {
+                    for (int i = 0; i < numberOfConferenceRows; i++) {
+                        if (!(conferenceOnlyRows[i] == null)) {
+                            model.addRow((Object[]) conferenceOnlyRows[i]);
+                        }
+                    }
+                }
+            case 2:
+                Object[] bookOnlyRow = new Object[10];
+                bookOnlyRow = allCitation.getCitationsBook();
+                if (bookOnlyRow.length >= 1) {
+                    for (int i = 0; i < numberOfBookRows; i++) {
+                        if (!(bookOnlyRow[i] == null)) {
+                            model.addRow((Object[]) bookOnlyRow[i]);
+                        }
+                    }
+                }
+
+
+
+        }
+    });
 
         setLayout(new FlowLayout(FlowLayout.LEFT));
 

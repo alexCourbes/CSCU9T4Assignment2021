@@ -12,9 +12,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 public class AddCitation extends JPanel {
+
     //Labels
 
     //private JLabel typeOfPublicationLabel = new JLabel("Type of publication:");
@@ -24,6 +27,7 @@ public class AddCitation extends JPanel {
     private JLabel digitalObjectIdentifierLabel = new JLabel("DOI:");
     private JLabel nameOfPublisherLabel = new JLabel("name of publisher:");
     private JLabel yearOfPublicationLabel = new JLabel("Year of publication:");
+
     private JLabel dateAddedLabel = new JLabel("Date Added: DD-MM-YYYY");
 
     //textFields
@@ -35,9 +39,11 @@ public class AddCitation extends JPanel {
     private JTextField nameOfPublisherTextField = new JTextField();
     private JTextField yearsOfPublicationTextField = new JTextField();
 
-    DateFormat dateformat = new SimpleDateFormat("dd-mm-yyyy");
+
     private JFormattedTextField dateAddedTextField = new JFormattedTextField();
 
+    //Date
+         JCheckBox automaticDateAdded =  new JCheckBox("Today's date",false);
 
 
 
@@ -116,6 +122,7 @@ public class AddCitation extends JPanel {
             int selection = publicationType.getSelectedIndex(); //get the index of the element selected
             switch (selection) {
                 case 0:
+
                     box.add(nameOfJournalLabel);
                     box.add(nameofJournalTextField);
 
@@ -199,8 +206,12 @@ public class AddCitation extends JPanel {
         box.add(nameOfPublisherTextField);
         box.add(digitalObjectIdentifierLabel);
         box.add(digitalObjectIdentifierTextField);
+
+        Box dateBox = Box.createHorizontalBox();
         box.add(dateAddedLabel);
-        box.add(dateAddedTextField);
+        box.add(dateBox);
+        dateBox.add(dateAddedTextField);
+        box.add(automaticDateAdded);
         //journal paper entry is set to the default
         box.add(Box.createVerticalStrut(50));
         box.add(nameOfJournalLabel);
@@ -230,6 +241,25 @@ public class AddCitation extends JPanel {
                 submitCitation.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
         });
+
+        /*** Functionality for Date Cehckbox ***/
+
+        automaticDateAdded.addActionListener(e->{
+
+
+
+            if (automaticDateAdded.isSelected()){
+                dateAddedTextField.setEnabled(false);
+
+                dateAdded = new Date();
+
+
+            }else {
+                dateAddedTextField.setEnabled(true);
+            }
+
+        });
+
 
         /*** Functionality for add button ***/
 
