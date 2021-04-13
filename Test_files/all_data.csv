@@ -1,8 +1,5 @@
-Title-D-0,Jason Adair,2006,ACM,202/1031,8/5/2021,,,,,,book-a,Mina Mouse
-Title-A-0,Heidi Brynjolfsdottir,1999,ACM,765/1773,23/3/2021,,,,Conference-3,Location-U,,,
+title,authors,year,publisher,doi,date,journal,volume,issue,venue,location,bookTitle,editor
 Title-B-0,Jason Adair,2015,ACM,533/49,6/2/2021,journal-s,9,8,,
-Title-D-0,Jason Adair,2006,ACM,202/1031,8/5/2021,,,,,,book-a,Mina Mouse
-Title-G-1,Kevin Bacon,2007,IEEE,580/491,13/2/2021,journal-x,5,5,,
 Title-A-0,Heidi Brynjolfsdottir,1999,ACM,765/1773,23/3/2021,,,,Conference-3,Location-U,,,
 Title-D-0,Jason Adair,2006,ACM,202/1031,8/5/2021,,,,,,book-a,Mina Mouse
 Title-G-1,Kevin Bacon,2007,IEEE,580/491,13/2/2021,journal-x,5,5,,

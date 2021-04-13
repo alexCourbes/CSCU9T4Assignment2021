@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
 <citation>
-    <ref citationType="JournalCitation">
+    <cit citationType="JournalCitation">
         <title>Title-B-0</title>
         <authors>Jason Adair</authors>
         <doi>533/49</doi>
@@ -11,8 +11,8 @@
         <volume>9</volume>
         <issue>8</issue>
         
-    </ref>
-    <ref citationType="ConferenceCitation">
+    </cit>
+    <cit citationType="ConferenceCitation">
         <title>Title-A-0</title>
         <authors>Heidi Brynjolfsdottir</authors>
         <doi>765/1773</doi>
@@ -21,8 +21,8 @@
         <dateAdded> 23/03/2021 </dateAdded>
         <venue>Conference-3</venue>
         <location>Location-U</location>
-    </ref>
-    <ref citationType="BookCitation">
+    </cit>
+    <cit citationType="BookCitation">
         <title>Title-D-0</title>
         <authors>Jason Adair</authors>
         <doi>202/1031</doi>
@@ -31,8 +31,8 @@
         <dateAdded> 08/05/2021 </dateAdded>
         <book>book-a</book>
         <editor>Mina Mouse</editor>
-    </ref>
-    <ref citationType="JournalCitation">
+    </cit>
+    <cit citationType="JournalCitation">
         <title>Title-G-1</title>
         <authors>Kevin Bacon</authors>
         <doi>580/491</doi>
@@ -42,8 +42,8 @@
         <journal>journal-x</journal>
         <volume>5</volume>
         <issue>5</issue>
-    </ref>
-    <ref citationType="ConferenceCitation">
+    </cit>
+    <cit citationType="ConferenceCitation">
         <title>Title-C-1</title>
         <authors>Kevin Bacon</authors>
         <doi>611/1124</doi>
@@ -52,8 +52,8 @@
         <dateAdded> 23/11/2021 </dateAdded>
         <venue>Conference-2</venue>
         <location>Location-R</location>
-    </ref>
-    <ref citationType="BookCitation">
+    </cit>
+    <cit citationType="BookCitation">
         <title>Title-F-1</title>
         <authors>Jason Adair</authors>
         <doi>741/1240</doi>
@@ -62,8 +62,8 @@
         <dateAdded> 14/06/2021 </dateAdded>
         <book>book-g</book>
         <editor>Mina Mouse</editor>
-    </ref>
-    <ref citationType="JournalCitation">
+    </cit>
+    <cit citationType="JournalCitation">
         <title>Title-F-2</title>
         <authors>Saemi Haraldsson</authors>
         <doi>1045/875</doi>
@@ -73,8 +73,8 @@
         <journal>journal-z</journal>
         <volume>5</volume>
         <issue>1</issue>
-    </ref>
-    <ref citationType="ConferenceCitation">
+    </cit>
+    <cit citationType="ConferenceCitation">
         <title>Title-A-2</title>
         <authors>Heidi Brynjolfsdottir</authors>
         <doi>71/902</doi>
@@ -83,6 +83,6 @@
         <dateAdded> 19/10/2021 </dateAdded>
         <venue>Conference-3</venue>
         <location>Location-Y</location>
-    </ref>
+    </cit>
     
 </citation>

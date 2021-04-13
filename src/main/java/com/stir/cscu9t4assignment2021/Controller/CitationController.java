@@ -1,5 +1,8 @@
+/**
+ *
+ * @author 2822236
+ */
 package com.stir.cscu9t4assignment2021.Controller;
-
 import com.stir.cscu9t4assignment2021.Model.BookCitation;
 import com.stir.cscu9t4assignment2021.Model.Citation;
 import com.stir.cscu9t4assignment2021.Model.ConferenceCitation;
@@ -12,8 +15,9 @@ public class CitationController {
     private static List<Citation> citationList = new ArrayList<Citation>();
     ;
     private static int iCit = 0;
-//LIST were we store all citation
 
+//LIST were we store all citation
+/**CITATION CONTROLLER takes care of all of the functionality of the citations **/
 
     public CitationController() {
 
@@ -24,6 +28,8 @@ public class CitationController {
         iCit++;
     }
 
+
+    //Get all Journal citation as an ojbect
     public Object[] getCitationsJournal() {
 
         String title, doi, publisher, journalName;
@@ -69,9 +75,13 @@ public class CitationController {
             lenght++;
         }
         return allrows;
+
+
     }
 
 
+
+    //Filter functionality : filter by journal (search panel)
     public Object[] getCitationsJournalFromSearch(String journalNameUser) {
         String title, doi, publisher, journalName;
         String location = null;
@@ -119,9 +129,11 @@ public class CitationController {
         return allrows;
     }
 
+
+    // Get all Conference Citation as an Object
     public Object[] getCitationsConference() {
 
-        String title, doi, publisher, conferenceName, venue;
+        String title, doi, publisher, conferenceName, location;
         String editor = null;
         String authors;
 
@@ -136,8 +148,8 @@ public class CitationController {
                 authors = String.join(",", i.getAuthors());
                 doi = (((ConferenceCitation) i).getDigitalObjectIdentifier());
                 publisher = (((ConferenceCitation) i).getNameOfpublisher());
-                conferenceName = (((ConferenceCitation) i).getVenue());
-                venue = (((ConferenceCitation) i).getVenue());
+                conferenceName = (((ConferenceCitation) i).getLocation());
+                location = (((ConferenceCitation) i).getLocation());
                 int year = (((ConferenceCitation) i).getYearOfPublication());
 
                 String date = (((ConferenceCitation) i).getDateToString());
@@ -158,7 +170,7 @@ public class CitationController {
                 row[8] = volume;
 
                 row[9] = editor;
-                row[10] = venue;
+                row[10] = location;
                 allrows[lenght] = row;
 
 
@@ -170,8 +182,10 @@ public class CitationController {
         return allrows;
     }
 
+
+    // Filter functionality of search: filter by Venue
     public Object[] getCitationsVenueFromSearch(String venueUser) {
-        String title, doi, publisher, conferenceName, venue;
+        String title, doi, publisher, conferenceName, location;
         int issue = 0;
         int volume = 0;
         String editor = null;
@@ -188,10 +202,10 @@ public class CitationController {
                 authors = String.join(",", i.getAuthors());
                 doi = (((ConferenceCitation) i).getDigitalObjectIdentifier());
                 publisher = (((ConferenceCitation) i).getNameOfpublisher());
-                conferenceName = (((ConferenceCitation) i).getLocation());
+                conferenceName = (((ConferenceCitation) i).getNameOfConference());
                 int year = (((ConferenceCitation) i).getYearOfPublication());
                 String date = (((ConferenceCitation) i).getDateToString());
-                venue = (((ConferenceCitation) i).getVenue());
+                location = (((ConferenceCitation) i).getLocation());
 
                 row[0] = title;
                 row[1] = authors;
@@ -206,7 +220,7 @@ public class CitationController {
                 row[8] = volume;
 
                 row[9] = editor;
-                row[10] = venue;
+                row[10] = location;
                 if (venueUser.equals(row[10])) {
                     allrows[lenght] = row;
                 }
@@ -218,6 +232,8 @@ public class CitationController {
     }
 
 
+
+    //Get All book citations as object
     public Object[] getCitationsBook() {
 
         String title, doi, publisher, bookName, editor;
@@ -270,6 +286,8 @@ public class CitationController {
         return allrows;
     }
 
+
+    //For Filter button from publisher in search Page
     public Object[] getCitationsPublisherFromSearch(String publisherUser) {
         String title, doi, journalName;
         String location = null;
@@ -292,6 +310,7 @@ public class CitationController {
                 String date = (((JournalCitation) i).getDateToString());
                 int issue = (((JournalCitation) i).getIssue());
                 int volume = (((JournalCitation) i).getVolume());
+
 
                 row[0] = title;
                 row[1] = authors;
@@ -320,7 +339,7 @@ public class CitationController {
                 authors = String.join(",", i.getAuthors());
                 doi = (((ConferenceCitation) i).getDigitalObjectIdentifier());
                 String publisher = (((ConferenceCitation) i).getNameOfpublisher());
-                journalName = (((ConferenceCitation) i).getLocation());
+                journalName = (((ConferenceCitation) i).getNameOfConference());
                 int year = (((ConferenceCitation) i).getYearOfPublication());
                 String date = (((ConferenceCitation) i).getDateToString());
                 int issue = 0;
@@ -385,9 +404,91 @@ public class CitationController {
         return allrows;
     }
 
+    //Get All ciitations and parse them to a string (used to export to TXT)
+    public String[] getCitationsToString() {
+
+
+        String Citation = null;
+        String[] citArray = new String[citationList.toArray().length];
+        int counter = -1;
+        for (Citation i : citationList) {
+            counter++;
+
+            if (i instanceof JournalCitation) {
+                Citation = ((JournalCitation) i).getTitle() + "," + String.join(",", i.getAuthors()) + "," +
+                        ((JournalCitation) i).getYearOfPublication() + "," + ((JournalCitation) i).getNameOfpublisher() + "," + "doi: "+
+                        ((JournalCitation) i).getDigitalObjectIdentifier() + "," + ((JournalCitation) i).getDateAdded() + "," +
+                        ((JournalCitation) i).getJournalName() + "," + ((JournalCitation) i).getVolume() + "," + ((JournalCitation) i).getIssue();
+
+            }
+            citArray[counter] = Citation;
+
+            if (i instanceof ConferenceCitation) {
+                Citation = ((ConferenceCitation) i).getTitle() + "," + String.join(",", i.getAuthors()) + "," +
+                        ((ConferenceCitation) i).getYearOfPublication() + "," + ((ConferenceCitation) i).getNameOfpublisher() + "," +
+                        ((ConferenceCitation) i).getDigitalObjectIdentifier() + "," + ((ConferenceCitation) i).getDateAdded() + "," +
+                        ((ConferenceCitation) i).getNameOfConference() + "," + ((ConferenceCitation) i).getLocation();
+
+            }
+            citArray[counter] = Citation;
+            if (i instanceof BookCitation) {
+                Citation = ((BookCitation) i).getTitle() + "," + String.join(",", i.getAuthors()) + "," +
+                        ((BookCitation) i).getYearOfPublication() + "," + ((BookCitation) i).getNameOfpublisher() + "," +
+                        ((BookCitation) i).getDigitalObjectIdentifier() + "," + ((BookCitation) i).getDateAdded() + "," +
+                        ((BookCitation) i).getBookName() + "," + ((BookCitation) i).getEditor();
+                citArray[counter] = Citation;
+
+            }
+
+
+        }
+        return citArray;
+    }
 
 
 }
+
+            //functionality for copying a single selected row --> not finished
+
+
+//            public String getCitation ( int selectedRow){
+//
+//                Citation copy = null;
+//                String citation = null;
+//                copy = citationList.get(selectedRow + 1);
+//
+//                //or (Citation i : citationList) {
+//
+//                if (copy instanceof BookCitation) {
+//                    citation = ("[1] " + String.join(",", copy.getAuthors()) + ". " + (((BookCitation) copy).getBookName()) + ". "
+//                            + (((BookCitation) copy).getEditor() + ". " + (((BookCitation) copy).getYearOfPublication())
+//                            + ". " + (((BookCitation) copy).getYearOfPublication())
+//                            + ". " + "Added on: " + (((BookCitation) copy).getDateAdded().toString()
+//                            + ". DOI: " + (((BookCitation) copy).getDigitalObjectIdentifier()))));
+//
+//                    return citation;
+//                } else if (copy instanceof ConferenceCitation) {
+//                    citation = ("[1] " + String.join(",", copy.getAuthors()) + ". " + (((ConferenceCitation) copy).getNameOfpublisher()) + ". location: "
+//                            + (((ConferenceCitation) copy).getNameOfConference() + ". " + (((ConferenceCitation) copy).getYearOfPublication())
+//                            + ". " + (((ConferenceCitation) copy).getYearOfPublication())
+//                            + ". " + "Added on: " + (((ConferenceCitation) copy).getDateAdded().toString()
+//                            + ". DOI: " + (((ConferenceCitation) copy).getDigitalObjectIdentifier()))));
+//
+//                    return citation;
+//                } else if (copy instanceof JournalCitation) {
+//                    citation = ("[1] " + String.join(",", copy.getAuthors()) + ". issue:  " + (((JournalCitation) copy).getIssue()) + ". volume: "
+//                            + (((JournalCitation) copy).getVolume() + ". " + (((JournalCitation) copy).getYearOfPublication())
+//                            + ". " + (((JournalCitation) copy).getYearOfPublication())
+//                            + ". " + "Added on: " + (((JournalCitation) copy).getDateAdded().toString()
+//                            + ". DOI: " + (((JournalCitation) copy).getDigitalObjectIdentifier()))));
+//
+//                    return citation;
+//                }
+//                return citation;
+//            }
+
+
+
 
 
 

@@ -1,6 +1,8 @@
 package com.stir.cscu9t4assignment2021.View;
 
 import com.stir.cscu9t4assignment2021.Controller.CitationController;
+import com.stir.cscu9t4assignment2021.Model.BookCitation;
+import com.stir.cscu9t4assignment2021.Model.ConferenceCitation;
 import com.stir.cscu9t4assignment2021.Model.JournalCitation;
 
 import javax.swing.*;
@@ -40,7 +42,7 @@ public class SearchCitation extends JPanel {
     private JCheckBox orderAlphabetically = new JCheckBox("Order Alphabetically", false);
 
     /***FIND ALL BY**/
-    String[] filterByTypeOptions = {"name of Citation(Journal)", "Conference Venue", "Publisher"};
+    String[] filterByTypeOptions = {"name of Citation(Journal)", "Conference Location", "Publisher"};
     private JComboBox findBy = new JComboBox(filterByTypeOptions);
 
 
@@ -109,7 +111,7 @@ public class SearchCitation extends JPanel {
 
         /***TABLE***/
 
-        Object[] columns = new Object[]{"Title", "Authors", "DOI", "Publisher", "Name of Citation", "Year", "Date", "Issue", "Volume", "editor", "venue"};
+        Object[] columns = new Object[]{"Title", "Authors", "DOI", "Publisher", "Name of Citation", "Year", "Date", "Issue", "Volume", "editor", "location"};
 
         citTable = new JTable();
         //model for the table
@@ -285,9 +287,11 @@ public class SearchCitation extends JPanel {
         copySelected.addActionListener(e->{
             int selectedRow = citTable.getSelectedRow();
             JOptionPane copyBox = new JOptionPane();
-            JLabel citation =  new JLabel();
+            CitationController  bookCopy = new CitationController();
+           // String resutl = bookCopy.getCitation(selectedRow);
+            // JLabel citation =  new JLabel(resutl);
 
-            JOptionPane.showMessageDialog(initialAddApp,citation);
+            JOptionPane.showMessageDialog(initialAddApp,"implementation not working!!");
         });
 
 

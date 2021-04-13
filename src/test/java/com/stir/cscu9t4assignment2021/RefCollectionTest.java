@@ -2,10 +2,11 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- *//*
+ */
 
 package com.stir.cscu9t4assignment2021;
 
+import com.stir.cscu9t4assignment2021.Model.Citation;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,11 +14,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-*/
+
 /**
  *
  * @author saemundur
- *//*
+ */
 
 public class RefCollectionTest {
     
@@ -40,22 +41,22 @@ public class RefCollectionTest {
     public void tearDown() {
     }
 
-    */
+
 /**
      * Test of addCite method, of class RefCollection.
-     *//*
+     */
 
-    @Test
-    public void testAddCite() {
-        System.out.println("addCite");
-        Ref ref = null;
-        RefCollection instance = new RefCollection();
-        instance.addCite(ref);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testAddCite() {
+//        System.out.println("addCite");
+//        Citation ref = null;
+//        Citation instance = new Citation();
+//        instance.(ref);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
-    */
+
 /**
      * Test of lookUpByJournal method, of class RefCollection.
      *//*
@@ -123,38 +124,38 @@ public class RefCollectionTest {
         fail("The test case is a prototype.");
     }
 
-    */
+
 /**
      * Test of exportAll method, of class RefCollection.
-     *//*
+     */
 
-    @Test
-    public void testExportAll() {
-        System.out.println("exportAll");
-        RefCollection instance = new RefCollection();
-        String expResult = "";
-        String result = instance.exportAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testExportAll() {
+//        System.out.println("exportAll");
+//        RefCollection instance = new RefCollection();
+//        String expResult = "";
+//        String result = instance.exportAll();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
-    */
-/**
+
+/*
      * Test of importMany method, of class RefCollection.
-     *//*
+     */
 
-    @Test
-    public void testImportMany() {
-        System.out.println("importMany");
-        String filePath = "";
-        RefCollection instance = new RefCollection();
-        String expResult = "";
-        String result = instance.importMany(filePath);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testImportMany() {
+//        System.out.println("importMany");
+//        String filePath = "";
+//        RefCollection instance = new RefCollection();
+//        String expResult = "";
+//        String result = instance.importMany(filePath);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     
 }
-*/
+

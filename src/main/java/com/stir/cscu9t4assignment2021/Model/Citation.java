@@ -1,8 +1,11 @@
 package com.stir.cscu9t4assignment2021.Model;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
+/**
+ *
+ * @author 2822236
+ */
 
 public class Citation {
 

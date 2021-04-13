@@ -1,5 +1,6 @@
 package com.stir.cscu9t4assignment2021.View;
 
+import com.stir.cscu9t4assignment2021.Controller.exportController;
 import com.stir.cscu9t4assignment2021.Controller.importController;
 import com.stir.cscu9t4assignment2021.Controller.mainController;
 import com.stir.cscu9t4assignment2021.Model.Citation;
@@ -8,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +35,9 @@ public class MainApp {
     private final JButton settingButton;
     final JButton aboutButton;
 
+    //Export dialog
+    JOptionPane exportDialog = new JOptionPane();
+
 
     //GUI
     public MainApp() {
@@ -51,7 +57,15 @@ public class MainApp {
         addCitationButton.addActionListener(e -> { //action listener that call the AddCitation class
 
             initialMainApp.removeAll();   //removing/closing any existing/previous panel on initialMainApp Panel
-            addPanel = new AddCitation(); //declaring Addcitation class
+
+
+            try {
+                addPanel = new AddCitation(); //declaring Addcitation class
+            } catch (ParseException parseException) {
+                parseException.printStackTrace();
+            }
+
+
             initialMainApp.add(addPanel); //adding it to the  main pannel
             initialMainApp.revalidate(); //refreshing the panel
 
@@ -129,8 +143,22 @@ public class MainApp {
 
         exportMenuButton.addActionListener(e -> {
             initialMainApp.removeAll();
-            exportPanel = new ExportCitation(initialMainApp);
-            initialMainApp.add(exportPanel); //calling exportPanel Class
+
+            Object[] options1 = { "Text"};
+            int result = JOptionPane.showOptionDialog(null, "Export to", "Export",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options1, null);
+            if (result == JOptionPane.YES_OPTION){
+            exportController newExport = new exportController();
+                try {
+                    newExport.exportToTXT();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }else{
+                System.out.println("Incorect location!!");
+            }
+
             initialMainApp.revalidate();
         });
 

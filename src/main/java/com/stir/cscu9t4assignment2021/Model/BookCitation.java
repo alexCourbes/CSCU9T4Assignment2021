@@ -1,6 +1,9 @@
 package com.stir.cscu9t4assignment2021.Model;
+/**
+ *
+ * @author 2822236
+ */
 
-import java.text.DateFormat;
 import java.util.Date;
 
 public class BookCitation extends Citation {

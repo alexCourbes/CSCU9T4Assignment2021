@@ -11,10 +11,18 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
+/**
+ *
+ * @author 2822236
+ */
+
+
+/***GUI FOR ADD PAGE **/
 
 public class AddCitation extends JPanel {
 
@@ -98,7 +106,7 @@ public class AddCitation extends JPanel {
     private Citation collectionOfCitation;
 
 
-    public AddCitation() {
+    public AddCitation() throws ParseException {
         initialAddApp = new JPanel();
 
         //styling of submit button
@@ -192,8 +200,6 @@ public class AddCitation extends JPanel {
         box.add(titleLable);
         box.add(titleTextField);
 
-        //box.add(typeOfPublicationLabel);
-        //box.add(typeOfPublicationTextField);
         box.add(authorsLabel);
         box.add(authorsTextField);
         box.add(yearOfPublicationLabel);
@@ -239,19 +245,14 @@ public class AddCitation extends JPanel {
         });
 
         /*** Functionality for Date Cehckbox ***/
-
         automaticDateAdded.addActionListener(e -> {
 
 
-            if (automaticDateAdded.isSelected()) {
+            if (automaticDateAdded.isSelected())
                 dateAddedTextField.setEnabled(false);
-
-                dateAdded = new Date();
-
-
-            } else {
+             else
                 dateAddedTextField.setEnabled(true);
-            }
+
 
         });
 
@@ -259,11 +260,22 @@ public class AddCitation extends JPanel {
         /*** Functionality for add button ***/
 
         submitCitation.addActionListener(e -> {
-
+            if(automaticDateAdded.isSelected()){
+                dateAdded = new Date();
+            }else {
+                String user = dateAddedTextField.getText();
+                Date userDate = null;
+                try {
+                    userDate = new SimpleDateFormat("dd/MM/yyyy").parse(user);
+                } catch (ParseException parseException) {
+                    parseException.printStackTrace();
+                }
+                dateAdded = userDate;
+            }
 
             title = titleTextField.getText();
 
-            authors = authorsTextField.getText().split(";"); /** to be modified **/
+            authors = authorsTextField.getText().split(";");
 
             digitalObjectIdentifier = digitalObjectIdentifierTextField.getText();
             nameOfPublisher = nameOfPublisherTextField.getText();
@@ -273,7 +285,6 @@ public class AddCitation extends JPanel {
                 yearOfPublication = 0;
                 JOptionPane.showMessageDialog(null, "Year field is missing! year has been set to 0");
             }
-
 
 
             int selection = publicationType.getSelectedIndex(); //get the index of the element selected

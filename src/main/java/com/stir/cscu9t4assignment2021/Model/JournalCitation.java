@@ -40,4 +40,8 @@ public class JournalCitation extends Citation {
     public int getVolume() {
         return volume;
     }
+
+
+
+
 }
