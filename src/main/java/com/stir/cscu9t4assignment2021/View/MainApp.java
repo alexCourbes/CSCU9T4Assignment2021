@@ -1,5 +1,6 @@
 package com.stir.cscu9t4assignment2021.View;
 
+import com.stir.cscu9t4assignment2021.Controller.importController;
 import com.stir.cscu9t4assignment2021.Controller.mainController;
 import com.stir.cscu9t4assignment2021.Model.Citation;
 
@@ -17,7 +18,7 @@ public class MainApp {
     private JPanel topMenu;
     private JPanel sideBarMenu;
 
-    private JPanel initialMainApp, addPanel, searchPanel, importPanel, exportPanel;
+    private JPanel initialMainApp, addPanel, searchPanel, exportPanel;
 
 
     //declaration of buttons for the menu at the top: topMenu
@@ -101,11 +102,10 @@ public class MainApp {
         importMenuButton.setContentAreaFilled(false);
 
         importMenuButton.addActionListener(e -> {
+           importController newimport = new importController();
+           newimport.ImportFileCSV();
+           initialMainApp.revalidate();
 
-            initialMainApp.removeAll();
-            importPanel = new ImportCitation(initialMainApp);
-            initialMainApp.add(importPanel);
-            initialMainApp.revalidate();
 
         });
 

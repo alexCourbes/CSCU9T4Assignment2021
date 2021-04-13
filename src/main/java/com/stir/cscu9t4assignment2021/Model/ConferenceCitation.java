@@ -1,34 +1,35 @@
 package com.stir.cscu9t4assignment2021.Model;
 
-import java.text.DateFormat;
 import java.util.Date;
 
 public class ConferenceCitation extends Citation {
 
-    private String conferenceName,location;
+    private String location,venue;
 
 
     //with date
-    public ConferenceCitation(String title, String[] authors, String digitalObjectIdentifier, String publisher, int yearOfPublication, Date dateAdded, String conferenceName, String location) {
+    public ConferenceCitation(String title, String[] authors, String digitalObjectIdentifier, String publisher,String location, int yearOfPublication, Date dateAdded , String venue) {
         super(title, authors, digitalObjectIdentifier, publisher, yearOfPublication,dateAdded);
-        this.conferenceName = conferenceName;
         this.location = location;
+        this.venue = venue;
     }
 
     //without date (from user)
-    public ConferenceCitation(String title, String[] authors, String digitalObjectIdentifier, String nameOfpublisher, int yearOfPublication, String venue, String location) {
-        super(title,authors,digitalObjectIdentifier,nameOfpublisher,yearOfPublication);
-        this.conferenceName = venue;
+    public ConferenceCitation(String title, String[] authors, String digitalObjectIdentifier, String publisher,String location, int yearOfPublication,  String venue) {
+        super(title,authors,digitalObjectIdentifier,publisher,yearOfPublication);
         this.location = location;
+        this.venue = venue;
     }
 
 
-
-    public String getVenue() {
-        return conferenceName;
-    }
 
     public String getLocation() {
         return location;
     }
+    public String getVenue() {
+        return venue;
+    }
+
+
+
 }

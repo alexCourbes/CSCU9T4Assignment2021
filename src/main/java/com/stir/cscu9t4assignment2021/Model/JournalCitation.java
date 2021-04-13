@@ -10,7 +10,7 @@ public class JournalCitation extends Citation {
 
 
     //program defines date
-    public JournalCitation( String title, String[] authors, String digitalObjectIdentifier, String nameOfPublisher, int yearOfPublication, Date dateAdded, String journalName, int issue, int volume) {
+    public JournalCitation( String title, String[] authors, String digitalObjectIdentifier, String nameOfPublisher,String journalName, int yearOfPublication, Date dateAdded, int issue, int volume) {
         super(title, authors, digitalObjectIdentifier, nameOfPublisher, yearOfPublication,dateAdded);
         this.journalName = journalName;
         this.issue = issue;

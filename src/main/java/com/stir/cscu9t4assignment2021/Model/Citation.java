@@ -1,6 +1,7 @@
 package com.stir.cscu9t4assignment2021.Model;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 public class Citation {
@@ -77,11 +78,12 @@ public class Citation {
         return digitalObjectIdentifier;
     }
 
-
     public String getCitation() {
         String result = getTitle();
         return result;
     }
+
+
 
 }
 

@@ -295,21 +295,21 @@ public class AddCitation extends JPanel {
                         JOptionPane.showMessageDialog(null, "Volume field missing, Volume set to 0");
                     }
                     CitationController newJournalCit = new CitationController();
-                    collectionOfCitation = new JournalCitation(title, authors, digitalObjectIdentifier, nameOfPublisher, yearOfPublication, dateAdded, nameOfJournal, issue, volume);
+                    collectionOfCitation = new JournalCitation(title, authors, digitalObjectIdentifier, nameOfPublisher, nameOfJournal,yearOfPublication, dateAdded, issue, volume);
                     newJournalCit.addCitation(collectionOfCitation);
                     break;
                 case 1: //conference
                     conferenceName = conferenceNameTextField.getText();
                     location = locationTextField.getText();
                     CitationController newConferenceCit = new CitationController();
-                    collectionOfCitation = new ConferenceCitation(titleTextField.getText(), authors, digitalObjectIdentifier, nameOfPublisher, yearOfPublication, dateAdded, conferenceName, location);
+                    collectionOfCitation = new ConferenceCitation(titleTextField.getText(), authors, digitalObjectIdentifier, nameOfPublisher,conferenceName, yearOfPublication, dateAdded , location);
                     newConferenceCit.addCitation(collectionOfCitation);
                     break;
                 case 2: //book
                     editor = editorTextField.getText();
                     bookTitle = bookTitleTextField.getText();
                     CitationController newBookCit = new CitationController();
-                    collectionOfCitation = new BookCitation(titleTextField.getText(), authors, digitalObjectIdentifier, nameOfPublisher, yearOfPublication, dateAdded, editor, bookTitle);
+                    collectionOfCitation = new BookCitation(titleTextField.getText(), authors, digitalObjectIdentifier, nameOfPublisher,bookTitle, yearOfPublication, dateAdded, editor);
                     newBookCit.addCitation(collectionOfCitation);
                     break;
             }
